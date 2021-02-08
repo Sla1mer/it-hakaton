@@ -1,11 +1,20 @@
 package com.example.it_hacaton.Items;
 
 public class ItemUsersForAdmin {
-    String name, middleName, cancel;
+    String name, middleName, cancel, lastName;
 
-    public ItemUsersForAdmin(String name, String middleName) {
+    public ItemUsersForAdmin(String name, String middleName, String lastName) {
         this.name = name;
         this.middleName = middleName;
+        this.lastName = lastName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getName() {
