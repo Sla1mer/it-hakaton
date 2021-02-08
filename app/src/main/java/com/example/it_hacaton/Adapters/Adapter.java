@@ -1,6 +1,5 @@
-package com.example.it_hacaton;
+package com.example.it_hacaton.Adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
+import com.example.it_hacaton.Items.Item;
+import com.example.it_hacaton.R;
 
 import java.util.ArrayList;
 

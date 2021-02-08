@@ -26,7 +26,6 @@
         android:id="@+id/email"
         android:layout_width="318dp"
         android:layout_height="49dp"
-        android:background="@android:color/transparent"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
@@ -45,7 +44,6 @@
         android:id="@+id/password"
         android:layout_width="318dp"
         android:layout_height="49dp"
-        android:background="@android:color/transparent"
         android:hint="Пароль"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
@@ -62,9 +60,8 @@
 
     <EditText
         android:id="@+id/firstName"
-        android:layout_width="318dp"
-        android:layout_height="49dp"
-        android:background="@android:color/transparent"
+        android:layout_width="313dp"
+        android:layout_height="45dp"
         android:hint="Имя"
         android:inputType="text"
         android:paddingLeft="10dp"
@@ -83,7 +80,6 @@
         android:id="@+id/midleName"
         android:layout_width="318dp"
         android:layout_height="49dp"
-        android:background="@android:color/transparent"
         android:hint="Отчество"
         android:inputType="text"
         android:paddingLeft="10dp"
@@ -102,7 +98,6 @@
         android:id="@+id/surname"
         android:layout_width="318dp"
         android:layout_height="49dp"
-        android:background="@android:color/transparent"
         android:hint="Фамилия"
         android:inputType="text"
         android:paddingLeft="10dp"
@@ -117,30 +112,42 @@
         app:layout_constraintTop_toBottomOf="@+id/midleName"
         app:layout_constraintVertical_bias="0.095" />
 
-    <RadioButton
-        android:id="@+id/radEmploy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Рабочий"
-        app:layout_constraintBottom_toTopOf="@+id/enter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surname"
-        app:layout_constraintVertical_bias="0.506" />
 
-    <RadioButton
-        android:id="@+id/radAdmin"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="329dp"
         android:layout_height="wrap_content"
-        android:text="Сисадмин"
-        app:layout_constraintBottom_toTopOf="@+id/enter"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/registr"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.817"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surname"
-        app:layout_constraintVertical_bias="0.506" />
+        app:layout_constraintTop_toBottomOf="@+id/surname">
 
+        <RadioButton
+            android:id="@+id/radEmploy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Рабочий"
+            app:layout_constraintBottom_toTopOf="@+id/enter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.108"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/surname"
+            app:layout_constraintVertical_bias="0.506" />
+
+        <RadioButton
+            android:id="@+id/radAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Сисадмин"
+            app:layout_constraintBottom_toTopOf="@+id/enter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.817"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/surname"
+            app:layout_constraintVertical_bias="0.506" />
+    </RadioGroup>
 
 
     <Button

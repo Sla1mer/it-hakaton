@@ -1,4 +1,4 @@
-package com.example.it_hacaton;
+package com.example.it_hacaton.Items;
 
 public class Item {
     String name, midleName, description;

@@ -27,14 +27,12 @@ private Button registration;
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.registr:
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
                         break;
                     case R.id.radAdmin:
-                        radEmply.setEnabled(false);
                         radAdmin.setEnabled(true);
                         break;
                     case R.id.radEmploy:
-                        radAdmin.setEnabled(false);
                         radEmply.setEnabled(true);
                         break;
                 }

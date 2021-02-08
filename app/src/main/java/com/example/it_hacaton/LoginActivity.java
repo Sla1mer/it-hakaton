@@ -29,7 +29,7 @@ private Button enter;
             public void onClick(View v) {
                 switch(v.getId()){
                     case R.id.enter:
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
                         break;
                     case R.id.regText:
                         startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
