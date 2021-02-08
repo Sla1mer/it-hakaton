@@ -10,7 +10,9 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ithacaton">
-        <activity android:name=".UsersInDBForAdminActivity"></activity>
+        <activity android:name=".AddUserToForAdminActivity"></activity>
+        <activity android:name=".AddDBForAdminActivity" />
+        <activity android:name=".UsersInDBForAdminActivity" />
         <activity android:name=".CreateNewsForAdminActivity" />
         <activity android:name=".ListOfDBForAdminActivity" />
         <activity android:name=".RegistrationActivity" />
