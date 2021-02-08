@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
+import com.example.it_hacaton.Adapters.UsersAdapterInListPeoples;
 import com.example.it_hacaton.Adapters.UsersForAdminAdapter;
 import com.example.it_hacaton.Admin.AddUserToForAdminActivity;
 import com.example.it_hacaton.Items.ItemUsersForAdmin;
@@ -30,7 +31,7 @@ public class UsersInDBActivity extends AppCompatActivity {
     private RecyclerView rv;
     private EditText search;
     private ApiInterface apiInterface;
-    private UsersForAdminAdapter adapter;
+    private UsersAdapterInListPeoples adapter;
     private ArrayList<ItemUsersForAdmin> arrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class UsersInDBActivity extends AppCompatActivity {
                 for (GetPersonFromDBPersonal getPerson : names) {
                     arrayList.add(new ItemUsersForAdmin(getPerson.getName(), getPerson.getMiddle_name(), getPerson.getLast_name()));
                 }
-                adapter = new UsersForAdminAdapter(arrayList, getApplicationContext(), name_db);
+                adapter = new UsersAdapterInListPeoples(arrayList, getApplicationContext(), name_db);
                 rv.setAdapter(adapter);
             }
 
