@@ -6,10 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".Admin.AddDBForAdminActivity">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Создать новую БД"
+        android:textColor="#000"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
     <EditText
         android:id="@+id/description"
-        android:layout_width="327dp"
-        android:layout_height="76dp"
+        android:layout_width="362dp"
+        android:layout_height="59dp"
         android:hint="Название БД"
         android:inputType="text"
         android:paddingLeft="10dp"
@@ -19,10 +34,10 @@
         android:textColorHint="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.376"
+        app:layout_constraintHorizontal_bias="0.326"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintVertical_bias="0.284" />
 
     <Button
         android:id="@+id/create"
@@ -35,6 +50,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintVertical_bias="0.206" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
