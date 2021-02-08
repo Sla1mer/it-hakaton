@@ -2,6 +2,7 @@ package com.example.it_hacaton.API;
 
 import com.example.it_hacaton.model.AddDatabase;
 import com.example.it_hacaton.model.GetListNameDB;
+import com.example.it_hacaton.model.GetPersonFromDBPersonal;
 import com.example.it_hacaton.model.User;
 
 import java.util.List;
@@ -39,4 +40,9 @@ public interface ApiInterface {
 
     @GET("get_list_name_db.php")
     Call<List<GetListNameDB>> get_list_name_db();
+
+    @GET("get_list_db_personal.php")
+    Call<List<GetPersonFromDBPersonal>> get_list_db_personal(
+            @Query("name_db") String list_db
+    );
 }

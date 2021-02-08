@@ -26,7 +26,7 @@ public class UsersInDBActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        arrayList.add(new ItemUsersForAdmin("Пупа", "Пупович"));
+        arrayList.add(new ItemUsersForAdmin("Пупа", "Пупович", "dsadas"));
 
         adapter = new UsersForAdminAdapter(arrayList, this);
         rv.setAdapter(adapter);
