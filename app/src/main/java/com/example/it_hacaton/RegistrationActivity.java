@@ -20,7 +20,7 @@ private Button registration;
         init();
         onCLicks();
     }
-
+//start
     private void onCLicks(){
         View.OnClickListener BTNs = new View.OnClickListener() {
             @Override
