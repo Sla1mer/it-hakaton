@@ -32,6 +32,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         init();
         onCLicks();
+        getSupportActionBar().hide();
     }
 
     private void onCLicks(){

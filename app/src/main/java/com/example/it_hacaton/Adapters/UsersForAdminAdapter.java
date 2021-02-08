@@ -50,6 +50,7 @@ public class UsersForAdminAdapter extends RecyclerView.Adapter<UsersForAdminAdap
         ItemUsersForAdmin parseItem = parseItems.get(position);
         holder.name.setText(parseItem.getName());
         holder.middleName.setText(parseItem.getMiddleName());
+        holder.last_name.setText(parseItem.getLastName());
     }
 
     @Override
@@ -58,10 +59,11 @@ public class UsersForAdminAdapter extends RecyclerView.Adapter<UsersForAdminAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView name, middleName, cancel;
+        TextView name, middleName, cancel, last_name;
         public ViewHolder(@NonNull View v) {
             super(v);
             v.setOnClickListener(this);
+            last_name = v.findViewById(R.id.midleName2);
             name = v.findViewById(R.id.name);
             middleName = v.findViewById(R.id.midleName);
             cancel = v.findViewById(R.id.cancel);

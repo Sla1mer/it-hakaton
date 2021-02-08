@@ -31,7 +31,7 @@ public class MainForAdminActivity extends AppCompatActivity {
         init();
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
-
+        getSupportActionBar().hide();
         arrayList.add(new Item("Тема", "Максимович", "Дай доступ в БД1"));
 
         adapter = new Adapter(this, arrayList);

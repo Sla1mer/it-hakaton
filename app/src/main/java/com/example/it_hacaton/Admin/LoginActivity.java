@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         init();
         onCLicks();
+        getSupportActionBar().hide();
     }
 
     private void onCLicks(){

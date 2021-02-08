@@ -34,7 +34,7 @@ public class AddUserToForAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_user_to_for_admin);
 
         Intent intent = getIntent();
-
+        getSupportActionBar().hide();
         String name_db = intent.getStringExtra("name_db");
 
         last_name = findViewById(R.id.surname);

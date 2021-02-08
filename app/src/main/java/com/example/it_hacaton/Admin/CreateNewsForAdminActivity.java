@@ -22,7 +22,7 @@ private boolean isReached = false;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_news_for_admin);
         init();
-
+        getSupportActionBar().hide();
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

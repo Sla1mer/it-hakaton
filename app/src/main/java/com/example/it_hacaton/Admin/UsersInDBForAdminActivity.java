@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.it_hacaton.API.ApiClient;
@@ -30,6 +33,7 @@ import retrofit2.Response;
 
 public class UsersInDBForAdminActivity extends AppCompatActivity {
     private RecyclerView rv;
+    private EditText search;
     private ApiInterface apiInterface;
     private ApiInterface apiInterface2;
     private String name_db;
@@ -41,10 +45,28 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_in_d_b_for_admin);
         Intent intent = getIntent();
-
         name_db = intent.getStringExtra("name_db");
 
         final Timer time = new Timer();
+        getSupportActionBar().hide();
+
+        search = findViewById(R.id.search);
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
 
         time.schedule(new TimerTask() {
             @Override
@@ -75,7 +97,7 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         rv = findViewById(R.id.rv);
         addImage = findViewById(R.id.addImage);
         addImage.setOnClickListener(new View.OnClickListener() {
-            @Override
+            @Override//
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), AddUserToForAdminActivity.class).putExtra("name_db", name_db));
             }
@@ -85,4 +107,15 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));//
 
     }
+
+    private void filter(String text){
+        ArrayList<ItemUsersForAdmin> array = new ArrayList<>();
+        for(ItemUsersForAdmin item : arrayList){
+            if(item.getName().toLowerCase().contains(text.toLowerCase()) || item.getMiddleName().toLowerCase().contains(text.toLowerCase()) || item.getLastName().toLowerCase().contains(text.toLowerCase())){
+                array.add(item);
+            }
+        }
+        adapter.filterList(array);
+    }
+
 }

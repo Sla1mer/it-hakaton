@@ -32,7 +32,7 @@ public class AddDBForAdminActivity extends AppCompatActivity {
 
         name_db = findViewById(R.id.name_db);
         create = findViewById(R.id.create);
-
+        getSupportActionBar().hide();
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
