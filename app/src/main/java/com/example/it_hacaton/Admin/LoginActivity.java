@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
+import com.example.it_hacaton.User;
+import com.example.it_hacaton.Users.MainActivity;
 import com.example.it_hacaton.model.Users;
 import com.google.gson.Gson;
 
@@ -56,7 +58,7 @@ private ApiInterface apiInterface;
                                 User user = new User();
 
                                 for (User u : usersList) {
-                                    user.setEmail(u.getStatus());
+                                    user.setStatus(u.getStatus());
                                 }
 
                                 assert usersList != null;
@@ -64,7 +66,7 @@ private ApiInterface apiInterface;
                                     if (user.getStatus().equals("Сисадмин")) {
                                         startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
                                     } else {
-                                        // добавить
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                     }
                                 }
                             }

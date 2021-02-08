@@ -20,6 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import com.example.it_hacaton.R;
+import com.example.it_hacaton.User;
 
 public class RegistrationActivity extends AppCompatActivity {
 private RadioButton radEmply, radAdmin;
