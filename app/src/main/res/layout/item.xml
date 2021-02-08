@@ -19,21 +19,30 @@
             android:layout_height="match_parent">
 
 
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@drawable/list"
+                app:layout_constraintBottom_toBottomOf="@+id/DB"
+                app:layout_constraintEnd_toStartOf="@+id/name"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/DB" />
+
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tema"
-                android:textSize="20dp"
                 android:textColor="#000"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.044"
+                app:layout_constraintHorizontal_bias="0.186"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.195" />
-
+                app:layout_constraintVertical_bias="0.208" />
 
             <TextView
                 android:id="@+id/midleName"
@@ -45,10 +54,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.051"
+                app:layout_constraintHorizontal_bias="0.054"
                 app:layout_constraintStart_toEndOf="@+id/name"
                 app:layout_constraintTop_toTopOf="@+id/name"
-                app:layout_constraintVertical_bias="0.208" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/surname"
@@ -60,10 +69,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.083"
+                app:layout_constraintHorizontal_bias="0.11"
                 app:layout_constraintStart_toEndOf="@+id/midleName"
                 app:layout_constraintTop_toTopOf="@+id/name"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/description"
@@ -73,10 +82,10 @@
                 android:textColor="#000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.08"
+                app:layout_constraintHorizontal_bias="0.338"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/name"
-                app:layout_constraintVertical_bias="0.234" />
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

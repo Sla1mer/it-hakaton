@@ -19,12 +19,12 @@
         app:layout_constraintHorizontal_bias="0.158"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.04" />
 
     <EditText
         android:id="@+id/name_db"
-        android:layout_width="362dp"
-        android:layout_height="59dp"
+        android:layout_width="323dp"
+        android:layout_height="56dp"
         android:hint="Название БД"
         android:inputType="text"
         android:paddingLeft="10dp"
@@ -34,14 +34,23 @@
         android:textColorHint="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.326"
+        app:layout_constraintHorizontal_bias="0.693"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.284" />
+        app:layout_constraintVertical_bias="0.281" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/db"
+        app:layout_constraintBottom_toBottomOf="@+id/name_db"
+        app:layout_constraintEnd_toStartOf="@+id/name_db"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/name_db" />
 
     <Button
         android:id="@+id/create"
-        android:layout_width="268dp"
+        android:layout_width="315dp"
         android:layout_height="55dp"
         android:backgroundTint="@color/cardview_dark_background"
         android:text="Создать"
