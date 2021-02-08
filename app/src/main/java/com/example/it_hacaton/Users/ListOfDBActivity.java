@@ -9,10 +9,8 @@ import android.widget.EditText;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
-import com.example.it_hacaton.Adapters.AdapterForDBList_ForAdmin;
 import com.example.it_hacaton.Items.ItemForDBForAdmin;
 import com.example.it_hacaton.R;
-import com.example.it_hacaton.UserAdapter.AdapterUser;
 import com.example.it_hacaton.UserAdapter.UsersAdapterInDB;
 import com.example.it_hacaton.model.GetListNameDB;
 
@@ -40,7 +38,6 @@ public class ListOfDBActivity extends AppCompatActivity {
 
         apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
         Call<List<GetListNameDB>> call = apiInterface.get_list_name_db();
-
         call.enqueue(new Callback<List<GetListNameDB>>() {
             @Override
             public void onResponse(Call<List<GetListNameDB>> call, Response<List<GetListNameDB>> response) {
@@ -64,6 +61,8 @@ public class ListOfDBActivity extends AppCompatActivity {
 
     private void init(){
         rv = findViewById(R.id.rv);
+        search = findViewById(R.id.search);
     }
+
 
 }

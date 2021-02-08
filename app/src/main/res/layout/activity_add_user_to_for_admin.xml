@@ -32,7 +32,20 @@
         app:layout_constraintHorizontal_bias="0.376"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.208" />
+        app:layout_constraintVertical_bias="0.293" />
+
+    <EditText
+        android:id="@+id/surname"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:hint="Фамилия"
+        android:textColorHint="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.376"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.168" />
 
     <EditText
         android:id="@+id/middleName"
@@ -50,7 +63,7 @@
         app:layout_constraintHorizontal_bias="0.376"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.088" />
+        app:layout_constraintVertical_bias="0.094" />
 
     <Button
         android:id="@+id/create"

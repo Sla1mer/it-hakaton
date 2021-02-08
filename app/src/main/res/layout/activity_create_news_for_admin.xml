@@ -22,10 +22,10 @@
 
 
     <EditText
-        android:id="@+id/nameTo"
+        android:id="@+id/name"
         android:layout_width="318dp"
         android:layout_height="49dp"
-        android:hint="Кому"
+        android:hint="Имя"
         android:textColorHint="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,9 +35,36 @@
         app:layout_constraintVertical_bias="0.197" />
 
     <EditText
+        android:id="@+id/middleName"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:hint="Отчество"
+        android:textColorHint="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.304" />
+
+    <EditText
+        android:id="@+id/surname"
+        android:layout_width="318dp"
+        android:layout_height="49dp"
+        android:hint="Фамилия"
+        android:textColorHint="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.407" />
+
+    <EditText
         android:id="@+id/description"
         android:layout_width="315dp"
         android:layout_height="76dp"
+        android:layout_marginBottom="300dp"
         android:hint="Текст"
         android:inputType="textAutoComplete"
         android:paddingLeft="10dp"
@@ -47,10 +74,10 @@
         android:textColorHint="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.376"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTo"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintTop_toBottomOf="@+id/surname"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/create"

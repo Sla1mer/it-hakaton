@@ -59,4 +59,10 @@ public class AdapterForDBList_ForAdmin extends RecyclerView.Adapter<AdapterForDB
             context.startActivity(new Intent(context, UsersInDBForAdminActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
+
+    public void filterList(ArrayList<ItemForDBForAdmin> filterList){
+        arrayList = filterList;
+        notifyDataSetChanged();
+    }
+
 }
