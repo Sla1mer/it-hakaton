@@ -1,6 +1,8 @@
 package com.example.it_hacaton.API;
 
 import com.example.it_hacaton.model.AddDatabase;
+import com.example.it_hacaton.model.AddPersonFromDBPersonal;
+import com.example.it_hacaton.model.DeletePerson;
 import com.example.it_hacaton.model.GetListNameDB;
 import com.example.it_hacaton.model.GetPersonFromDBPersonal;
 import com.example.it_hacaton.model.User;
@@ -44,5 +46,21 @@ public interface ApiInterface {
     @GET("get_list_db_personal.php")
     Call<List<GetPersonFromDBPersonal>> get_list_db_personal(
             @Query("name_db") String list_db
+    );
+
+    @FormUrlEncoded
+    @POST("delete_db_person.php")
+    Call<DeletePerson> delete_person_from_db(
+            @Field("name") String name,
+            @Field("middle_name") String middle_name,
+            @Field("last_name") String last_name
+    );
+
+    @GET("add_user_from_db_personal.php")
+    Call<AddPersonFromDBPersonal> add_user_from_db_personal(
+            @Query("name") String name,
+            @Query("middle_name") String middle_name,
+            @Query("last_name") String last_name,
+            @Query("database_name") String database_name
     );
 }

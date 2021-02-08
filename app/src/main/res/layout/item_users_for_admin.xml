@@ -69,16 +69,17 @@
                 android:id="@+id/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Откл."
-                android:textColor="#000"
+                android:text="Отключить"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                android:background="#676767"
                 app:layout_constraintBottom_toBottomOf="@+id/name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.649"
                 app:layout_constraintStart_toEndOf="@+id/midleName"
                 app:layout_constraintTop_toTopOf="@+id/name"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="1.0"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
