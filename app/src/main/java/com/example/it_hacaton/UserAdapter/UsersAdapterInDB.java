@@ -1,4 +1,4 @@
-package com.example.it_hacaton.Adapters;
+package com.example.it_hacaton.UserAdapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,31 +10,33 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.it_hacaton.Adapters.AdapterForDBList_ForAdmin;
+import com.example.it_hacaton.Admin.UsersInDBForAdminActivity;
 import com.example.it_hacaton.Items.ItemForDBForAdmin;
 import com.example.it_hacaton.R;
-import com.example.it_hacaton.Admin.UsersInDBForAdminActivity;
+import com.example.it_hacaton.Users.UsersInDBActivity;
 
 import java.util.ArrayList;
 
-public class AdapterForDBList_ForAdmin extends RecyclerView.Adapter<AdapterForDBList_ForAdmin.ViewHolder> {
+public class UsersAdapterInDB extends RecyclerView.Adapter<UsersAdapterInDB.ViewHolder> {
 
     private ArrayList<ItemForDBForAdmin> arrayList;
     private Context context;
 
-    public AdapterForDBList_ForAdmin(ArrayList<ItemForDBForAdmin> arrayList, Context context) {
+    public UsersAdapterInDB(ArrayList<ItemForDBForAdmin> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UsersAdapterInDB.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_for_db_for_admin, parent, false);
-        return new ViewHolder(view);
+        return new UsersAdapterInDB.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UsersAdapterInDB.ViewHolder holder, int position) {
         ItemForDBForAdmin parseItem = arrayList.get(position);
         holder.DB.setText(parseItem.getDB());
     }
@@ -56,7 +58,7 @@ public class AdapterForDBList_ForAdmin extends RecyclerView.Adapter<AdapterForDB
         public void onClick(View v) {
             int position = getAdapterPosition();
             //ItemForDBForAdmin parseItem = arrayList.get(position); //- не удалять
-            context.startActivity(new Intent(context, UsersInDBForAdminActivity.class));
+            context.startActivity(new Intent(context, UsersInDBActivity.class));
         }
     }
 }

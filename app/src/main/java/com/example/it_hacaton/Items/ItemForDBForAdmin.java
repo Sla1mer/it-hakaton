@@ -1,7 +1,7 @@
 package com.example.it_hacaton.Items;
 
 public class ItemForDBForAdmin {
-    String DB;
+    public String DB;
     public ItemForDBForAdmin(String DB){
         this.DB = DB;
     }

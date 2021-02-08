@@ -1,8 +1,10 @@
-package com.example.it_hacaton;
+package com.example.it_hacaton.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.it_hacaton.R;
 
 public class AddDBForAdminActivity extends AppCompatActivity {
 

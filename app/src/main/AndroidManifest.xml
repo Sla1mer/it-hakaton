@@ -10,20 +10,24 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ithacaton">
-        <activity android:name=".AddUserToForAdminActivity"></activity>
-        <activity android:name=".AddDBForAdminActivity" />
-        <activity android:name=".UsersInDBForAdminActivity" />
-        <activity android:name=".CreateNewsForAdminActivity" />
-        <activity android:name=".ListOfDBForAdminActivity" />
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Users.CreateNewsActivity"></activity>
+        <activity android:name=".Users.UsersInDBActivity" />
+        <activity android:name=".Users.ListOfDBActivity" />
+        <activity android:name=".Users.MainActivity" />
+        <activity android:name=".Admin.AddUserToForAdminActivity" />
+        <activity android:name=".Admin.AddDBForAdminActivity" />
+        <activity android:name=".Admin.UsersInDBForAdminActivity" />
+        <activity android:name=".Admin.CreateNewsForAdminActivity" />
+        <activity android:name=".Admin.ListOfDBForAdminActivity" />
+        <activity android:name=".Admin.RegistrationActivity" />
+        <activity android:name=".Admin.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainForAdminActivity" />
+        <activity android:name=".Admin.MainForAdminActivity" />
     </application>
 
 </manifest>
