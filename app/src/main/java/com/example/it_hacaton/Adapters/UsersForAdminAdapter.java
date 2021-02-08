@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
+import com.example.it_hacaton.Items.ItemForDBForAdmin;
 import com.example.it_hacaton.Items.ItemUsersForAdmin;
 import com.example.it_hacaton.R;
 import com.example.it_hacaton.model.DeletePerson;
@@ -87,5 +88,8 @@ public class UsersForAdminAdapter extends RecyclerView.Adapter<UsersForAdminAdap
         }
     }
 
-
+    public void filterList(ArrayList<ItemUsersForAdmin> filterList){
+        parseItems = filterList;
+        notifyDataSetChanged();
+    }
 }
