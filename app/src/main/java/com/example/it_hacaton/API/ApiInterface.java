@@ -1,6 +1,8 @@
 package com.example.it_hacaton.API;
 
-import com.example.it_hacaton.User;
+import com.example.it_hacaton.model.AddDatabase;
+import com.example.it_hacaton.model.GetListNameDB;
+import com.example.it_hacaton.model.User;
 
 import java.util.List;
 
@@ -9,7 +11,6 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
@@ -29,4 +30,13 @@ public interface ApiInterface {
             @Query("email") String email,
             @Query("password") String password
     );
+
+    @FormUrlEncoded
+    @POST("add_db.php")
+    Call<AddDatabase> add_db(
+            @Field("database_name") String database_name
+    );
+
+    @GET("get_list_name_db.php")
+    Call<List<GetListNameDB>> get_list_name_db();
 }

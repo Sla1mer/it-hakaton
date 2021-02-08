@@ -1,4 +1,4 @@
-package com.example.it_hacaton;
+package com.example.it_hacaton.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

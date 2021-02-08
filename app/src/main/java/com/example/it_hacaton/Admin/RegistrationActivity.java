@@ -2,8 +2,6 @@ package com.example.it_hacaton.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,14 +18,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import com.example.it_hacaton.R;
-import com.example.it_hacaton.User;
+import com.example.it_hacaton.model.User;
 
 public class RegistrationActivity extends AppCompatActivity {
-private RadioButton radEmply, radAdmin;
-private EditText email, password, name, middleName, surname;
-private Button registration;
-private ApiInterface apiInterface;
-private String status;
+    private RadioButton radEmply, radAdmin;
+    private EditText email, password, name, middleName, surname;
+    private Button registration;
+    private ApiInterface apiInterface;
+    private String status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +36,7 @@ private String status;
 
     private void onCLicks(){
         View.OnClickListener BTNs = new View.OnClickListener() {
-            @Override//l;l
+            @Override
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.radAdmin:

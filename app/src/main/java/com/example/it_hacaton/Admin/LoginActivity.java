@@ -11,14 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
-import com.example.it_hacaton.User;
+import com.example.it_hacaton.model.User;
 import com.example.it_hacaton.Users.MainActivity;
-import com.example.it_hacaton.model.Users;
-import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -29,10 +26,10 @@ import retrofit2.Response;
 import com.example.it_hacaton.R;
 
 public class LoginActivity extends AppCompatActivity {
-private EditText email, password;
-private TextView regText, forgetText;
-private Button enter;
-private ApiInterface apiInterface;
+    private EditText email, password;
+    private TextView regText, forgetText;
+    private Button enter;
+    private ApiInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
