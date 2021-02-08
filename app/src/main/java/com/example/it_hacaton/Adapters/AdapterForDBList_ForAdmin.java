@@ -46,7 +46,7 @@ public class AdapterForDBList_ForAdmin extends RecyclerView.Adapter<AdapterForDB
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView DB;
-        public ViewHolder(@NonNull View v) {
+        public ViewHolder(@NonNull View v) {//
             super(v);
             DB = v.findViewById(R.id.DB);
             v.setOnClickListener(this);
