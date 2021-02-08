@@ -8,11 +8,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import com.example.it_hacaton.API.ApiClient;
+import com.example.it_hacaton.API.ApiInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegistrationActivity extends AppCompatActivity {
 private RadioButton radEmply, radAdmin;
 private EditText email, password, name, middleName, surname;
 private Button registration;
+private ApiInterface apiInterface;
+private String status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,14 +36,34 @@ private Button registration;
             @Override
             public void onClick(View v) {
                 switch (v.getId()){
-                    case R.id.registr:
-                        startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
-                        break;
                     case R.id.radAdmin:
                         radAdmin.setEnabled(true);
+                        status = radAdmin.getText().toString();
                         break;
                     case R.id.radEmploy:
                         radEmply.setEnabled(true);
+                        status = radEmply.getText().toString();
+                        break;
+                    case R.id.registr:
+                        System.out.println(password.getText().toString());
+                        apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+                        Call<User> call = apiInterface.reg(name.getText().toString(),
+                                middleName.getText().toString(), surname.getText().toString(),
+                                email.getText().toString(), password.getText().toString(),
+                                status.toString());
+
+                        call.enqueue(new Callback<User>() {
+                            @Override
+                            public void onResponse(Call<User> call, Response<User> response) {
+                                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
+                            }
+
+                            @Override
+                            public void onFailure(Call<User> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
                         break;
                 }
             }
