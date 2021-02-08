@@ -12,7 +12,7 @@ import com.example.it_hacaton.R;
 import com.example.it_hacaton.UserAdapter.UsersAdapterInDB;
 
 import java.util.ArrayList;
-
+//
 public class ListOfDBActivity extends AppCompatActivity {
     private RecyclerView rv;
     private UsersAdapterInDB adapter;
