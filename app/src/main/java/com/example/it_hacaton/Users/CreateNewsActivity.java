@@ -1,4 +1,4 @@
-package com.example.it_hacaton;
+package com.example.it_hacaton.Users;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,13 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class CreateNewsForAdminActivity extends AppCompatActivity {
-private Button createBtn;
-private EditText nameTo, description;
+import com.example.it_hacaton.Admin.MainForAdminActivity;
+import com.example.it_hacaton.R;
+
+public class CreateNewsActivity extends AppCompatActivity {
+    private Button createBtn;
+    private EditText nameTo, description;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_news_for_admin);
+        setContentView(R.layout.activity_create_news);
         init();
 
         createBtn.setOnClickListener(new View.OnClickListener() {

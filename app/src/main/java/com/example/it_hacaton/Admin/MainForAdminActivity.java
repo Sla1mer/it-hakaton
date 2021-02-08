@@ -1,9 +1,11 @@
-package com.example.it_hacaton;
+package com.example.it_hacaton.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 
 import com.example.it_hacaton.Adapters.Adapter;
 import com.example.it_hacaton.Items.Item;
+import com.example.it_hacaton.R;
 
 import java.util.ArrayList;
 
@@ -58,4 +61,15 @@ public class MainForAdminActivity extends AppCompatActivity {
         addImage = findViewById(R.id.addImage);
     }
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Выход")
+                .setMessage("Вы действительно хотите выйти из приложения?")
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).setNegativeButton("Нет", null).show();
+    }
 }

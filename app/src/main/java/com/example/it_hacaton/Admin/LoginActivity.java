@@ -1,8 +1,10 @@
-package com.example.it_hacaton;
+package com.example.it_hacaton.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import com.example.it_hacaton.R;
 
 public class LoginActivity extends AppCompatActivity {
 private EditText email, password;
@@ -87,6 +91,18 @@ private ApiInterface apiInterface;
         regText = findViewById(R.id.regText);
         forgetText = findViewById(R.id.forgetText);
         enter = findViewById(R.id.enter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Выход")
+                .setMessage("Вы действительно хотите выйти из приложения?")
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).setNegativeButton("Нет", null).show();
     }
 
 }

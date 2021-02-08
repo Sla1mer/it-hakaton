@@ -1,7 +1,9 @@
-package com.example.it_hacaton;
+package com.example.it_hacaton.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,8 @@ import com.example.it_hacaton.API.ApiInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import com.example.it_hacaton.R;
 
 public class RegistrationActivity extends AppCompatActivity {
 private RadioButton radEmply, radAdmin;
@@ -83,4 +87,17 @@ private String status;
         password = findViewById(R.id.password);
         registration = findViewById(R.id.registr);
     }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Выход")
+                .setMessage("Вы действительно хотите выйти из приложения?")
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).setNegativeButton("Нет", null).show();
+    }
+
 }

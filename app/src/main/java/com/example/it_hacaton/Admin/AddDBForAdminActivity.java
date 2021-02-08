@@ -1,14 +1,16 @@
-package com.example.it_hacaton;
+package com.example.it_hacaton.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class UsersInDBForAdminActivity extends AppCompatActivity {
+import com.example.it_hacaton.R;
+
+public class AddDBForAdminActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_users_in_d_b_for_admin);
+        setContentView(R.layout.activity_add_d_b_for_admin);
     }
 }
