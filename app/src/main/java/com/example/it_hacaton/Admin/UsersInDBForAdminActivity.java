@@ -85,7 +85,7 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         rv = findViewById(R.id.rv);
         addImage = findViewById(R.id.addImage);
         addImage.setOnClickListener(new View.OnClickListener() {
-            @Override
+            @Override//
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), AddUserToForAdminActivity.class).putExtra("name_db", name_db));
             }
