@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/it-hacaton.iml" filepath="$PROJECT_DIR$/.idea/modules/it-hacaton.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/it-hacaton.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/it-hacaton.app.iml" />
-    </modules>
-  </component>
-</project>
