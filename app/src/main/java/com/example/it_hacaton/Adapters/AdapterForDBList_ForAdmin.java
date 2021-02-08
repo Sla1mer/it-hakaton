@@ -56,7 +56,7 @@ public class AdapterForDBList_ForAdmin extends RecyclerView.Adapter<AdapterForDB
         public void onClick(View v) {
             int position = getAdapterPosition();
             //ItemForDBForAdmin parseItem = arrayList.get(position); //- не удалять
-            context.startActivity(new Intent(context, UsersInDBForAdminActivity.class));
+            context.startActivity(new Intent(context, UsersInDBForAdminActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
 }
