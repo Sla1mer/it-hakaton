@@ -41,7 +41,7 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_in_d_b_for_admin);
         Intent intent = getIntent();
-
+        getSupportActionBar().hide();
         String name_db = intent.getStringExtra("name_db");
 
         search = findViewById(R.id.search);

@@ -39,7 +39,7 @@ public class ListOfDBForAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_of_d_b_for_admin);
 
         init();
-
+        getSupportActionBar().hide();
         addImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -38,7 +38,7 @@ public class UsersInDBActivity extends AppCompatActivity {
         setContentView(R.layout.activity_users_in_d_b);
 
         Intent intent = getIntent();
-
+        getSupportActionBar().hide();
         String name_db = intent.getStringExtra("name_db");
         search = findViewById(R.id.search);
         search.addTextChangedListener(new TextWatcher() {

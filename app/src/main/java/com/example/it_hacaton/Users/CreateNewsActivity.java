@@ -19,7 +19,7 @@ public class CreateNewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_news);
         init();
-
+        getSupportActionBar().hide();
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
