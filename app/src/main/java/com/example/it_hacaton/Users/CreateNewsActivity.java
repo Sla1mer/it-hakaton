@@ -32,7 +32,7 @@ public class CreateNewsActivity extends AppCompatActivity {
     private void init(){
         nameTo = findViewById(R.id.name);
         description = findViewById(R.id.description);
-        createBtn = findViewById(R.id.create);
+        createBtn = findViewById(R.id.create);//
     }
 
 }
