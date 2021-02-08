@@ -89,16 +89,6 @@ private String status;
         registration = findViewById(R.id.registr);
     }
 
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this).setIcon(android.R.drawable.ic_dialog_alert).setTitle("Выход")
-                .setMessage("Вы действительно хотите выйти из приложения?")
-                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                }).setNegativeButton("Нет", null).show();
-    }
+
 
 }
