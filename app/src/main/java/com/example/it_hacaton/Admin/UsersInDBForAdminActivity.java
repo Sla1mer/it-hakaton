@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,6 +21,8 @@ import com.example.it_hacaton.model.GetPersonFromDBPersonal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +32,7 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
     private RecyclerView rv;
     private ApiInterface apiInterface;
     private ApiInterface apiInterface2;
+    private String name_db;
  private ImageView addImage;
     private UsersForAdminAdapter adapter;
     private ArrayList<ItemUsersForAdmin> arrayList = new ArrayList<>();
@@ -38,27 +42,35 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_users_in_d_b_for_admin);
         Intent intent = getIntent();
 
-        String name_db = intent.getStringExtra("name_db");
+        name_db = intent.getStringExtra("name_db");
 
-        apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
-        Call<List<GetPersonFromDBPersonal>> call = apiInterface.get_list_db_personal(name_db);
+        final Timer time = new Timer();
 
-        call.enqueue(new Callback<List<GetPersonFromDBPersonal>>() {
+        time.schedule(new TimerTask() {
             @Override
-            public void onResponse(Call<List<GetPersonFromDBPersonal>> call, Response<List<GetPersonFromDBPersonal>> response) {
-                List<GetPersonFromDBPersonal> names = response.body();
-                for (GetPersonFromDBPersonal getPerson : names) {
-                    arrayList.add(new ItemUsersForAdmin(getPerson.getName(), getPerson.getMiddle_name(), getPerson.getLast_name()));
-                }
-                adapter = new UsersForAdminAdapter(arrayList, getApplicationContext());
-                rv.setAdapter(adapter);
-            }
+            public void run() {
+                arrayList.clear();//ПЕРЕЗАГРУЖАЕМ МЕТОД RUN В КОТОРОМ ДЕЛАЕТЕ ТО ЧТО ВАМ НАДО
+                apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+                Call<List<GetPersonFromDBPersonal>> call = apiInterface.get_list_db_personal(name_db);
 
-            @Override
-            public void onFailure(Call<List<GetPersonFromDBPersonal>> call, Throwable t) {
+                call.enqueue(new Callback<List<GetPersonFromDBPersonal>>() {
+                    @Override
+                    public void onResponse(Call<List<GetPersonFromDBPersonal>> call, Response<List<GetPersonFromDBPersonal>> response) {
+                        List<GetPersonFromDBPersonal> names = response.body();
+                        for (GetPersonFromDBPersonal getPerson : names) {
+                            arrayList.add(new ItemUsersForAdmin(getPerson.getName(), getPerson.getMiddle_name(), getPerson.getLast_name()));
+                        }
+                        adapter = new UsersForAdminAdapter(arrayList, getApplicationContext(), name_db);
+                        rv.setAdapter(adapter);
+                    }
 
+                    @Override
+                    public void onFailure(Call<List<GetPersonFromDBPersonal>> call, Throwable t) {
+
+                    }
+                });
             }
-        });
+        }, 0, 4000); //(4000 - ПОДОЖДАТЬ ПЕРЕД НАЧАЛОМ В МИЛИСЕК, ПОВТОРЯТСЯ 4 СЕКУНДЫ (1 СЕК = 1000 МИЛИСЕК))
 
         rv = findViewById(R.id.rv);
         addImage = findViewById(R.id.addImage);

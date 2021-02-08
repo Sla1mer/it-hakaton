@@ -29,10 +29,12 @@ public class UsersForAdminAdapter extends RecyclerView.Adapter<UsersForAdminAdap
     private ArrayList<ItemUsersForAdmin> parseItems;
     private Context context;
     private ApiInterface apiInterface;
+    private String database_name;
 
-    public UsersForAdminAdapter(ArrayList<ItemUsersForAdmin> parseItems, Context context) {
+    public UsersForAdminAdapter(ArrayList<ItemUsersForAdmin> parseItems, Context context, String database_name) {
         this.parseItems = parseItems;
         this.context = context;
+        this.database_name = database_name;
     }
 
 
@@ -71,7 +73,8 @@ public class UsersForAdminAdapter extends RecyclerView.Adapter<UsersForAdminAdap
 
             apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
             Call<DeletePerson> call = apiInterface.delete_person_from_db(parseItems.get(position).getName(),
-                    parseItems.get(position).getMiddleName(), parseItems.get(position).getLastName());
+                    parseItems.get(position).getMiddleName(), parseItems.get(position).getLastName(), database_name);
+            parseItems.remove(position);
 
             call.enqueue(new Callback<DeletePerson>() {
                 @Override

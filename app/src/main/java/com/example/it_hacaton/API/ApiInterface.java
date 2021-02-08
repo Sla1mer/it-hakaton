@@ -48,12 +48,12 @@ public interface ApiInterface {
             @Query("name_db") String list_db
     );
 
-    @FormUrlEncoded
-    @POST("delete_db_person.php")
+    @GET("delete_db_person.php")
     Call<DeletePerson> delete_person_from_db(
-            @Field("name") String name,
-            @Field("middle_name") String middle_name,
-            @Field("last_name") String last_name
+            @Query("name") String name,
+            @Query("middle_name") String middle_name,
+            @Query("last_name") String last_name,
+            @Query("database_name") String database_name
     );
 
     @GET("add_user_from_db_personal.php")

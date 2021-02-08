@@ -12,6 +12,16 @@ public class DeletePerson {
     @SerializedName("middle_name") private String middle_name;
     @Expose
     @SerializedName("last_name") private String last_name;
+    @Expose
+    @SerializedName("database_name") private String database_name;
+
+    public String getDatabase_name() {
+        return database_name;
+    }
+
+    public void setDatabase_name(String database_name) {
+        this.database_name = database_name;
+    }
 
     public int getId() {
         return id;

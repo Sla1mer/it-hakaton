@@ -67,7 +67,7 @@ public class UsersInDBActivity extends AppCompatActivity {
                 for (GetPersonFromDBPersonal getPerson : names) {
                     arrayList.add(new ItemUsersForAdmin(getPerson.getName(), getPerson.getMiddle_name(), getPerson.getLast_name()));
                 }
-                adapter = new UsersForAdminAdapter(arrayList, getApplicationContext());
+                adapter = new UsersForAdminAdapter(arrayList, getApplicationContext(), name_db);
                 rv.setAdapter(adapter);
             }
 
