@@ -80,7 +80,7 @@ public class UsersForAdminAdapter extends RecyclerView.Adapter<UsersForAdminAdap
                     notifyDataSetChanged();
                 }
 
-                @Override
+                @Override//
                 public void onFailure(Call<DeletePerson> call, Throwable t) {
 
                 }
