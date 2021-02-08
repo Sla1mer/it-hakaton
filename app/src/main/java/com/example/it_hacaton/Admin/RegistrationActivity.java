@@ -38,7 +38,7 @@ private String status;
 
     private void onCLicks(){
         View.OnClickListener BTNs = new View.OnClickListener() {
-            @Override
+            @Override//l;l
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.radAdmin:
