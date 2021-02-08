@@ -57,10 +57,8 @@ public class ListOfDBForAdminActivity extends AppCompatActivity {
                 List<GetListNameDB> names = response.body();
                 for (GetListNameDB getListNameDB : names) {
                     arrayList.add(new ItemForDBForAdmin(getListNameDB.getName_db()));
-                    System.out.println(arrayList);
+                    adapter.notifyDataSetChanged();
                 }
-                adapter = new AdapterForDBList_ForAdmin(arrayList, getApplicationContext());
-                rv.setAdapter(adapter);
             }
 
             @Override
@@ -68,6 +66,9 @@ public class ListOfDBForAdminActivity extends AppCompatActivity {
 
             }
         });
+
+        adapter = new AdapterForDBList_ForAdmin(arrayList, getApplicationContext());
+        rv.setAdapter(adapter);
 
     }
 
