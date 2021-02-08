@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
@@ -27,7 +28,7 @@ import retrofit2.Response;
 public class UsersInDBForAdminActivity extends AppCompatActivity {
     private RecyclerView rv;
     private ApiInterface apiInterface;
-
+ private ImageView addImage;
     private UsersForAdminAdapter adapter;
     private ArrayList<ItemUsersForAdmin> arrayList = new ArrayList<>();
     @Override
@@ -61,7 +62,8 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
 
 
         rv = findViewById(R.id.rv);
-        findViewById(R.id.addImage).setOnClickListener(new View.OnClickListener() {
+        addImage = findViewById(R.id.addImage);
+        addImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), AddUserToForAdminActivity.class));
@@ -69,7 +71,7 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         });
 
         rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setLayoutManager(new LinearLayoutManager(this));//
 
     }
 }
