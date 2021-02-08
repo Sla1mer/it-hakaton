@@ -8,16 +8,26 @@
     tools:context=".Admin.UsersInDBForAdminActivity">
 
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/search"
+        app:layout_constraintBottom_toBottomOf="@+id/search"
+        app:layout_constraintEnd_toStartOf="@+id/search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/search" />
+
     <EditText
         android:id="@+id/search"
-        android:layout_width="379dp"
-        android:layout_height="65dp"
+        android:layout_width="323dp"
+        android:layout_height="59dp"
         android:layout_marginTop="16dp"
         android:hint="Введите участника"
         android:padding="10dp"
         android:textColorHint="#000"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
