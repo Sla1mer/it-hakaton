@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.EditText;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
@@ -24,6 +25,7 @@ import retrofit2.Response;
 
 //
 public class ListOfDBActivity extends AppCompatActivity {
+    private EditText search;
     private RecyclerView rv;
     private UsersAdapterInDB adapter;
     private ArrayList<ItemForDBForAdmin> arrayList = new ArrayList<>();
