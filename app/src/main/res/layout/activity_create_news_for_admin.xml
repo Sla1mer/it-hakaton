@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".Admin.CreateNewsForAdminActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добавить новость"
+        android:textColor="#000"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+
     <EditText
         android:id="@+id/nameTo"
         android:layout_width="318dp"
@@ -14,10 +29,10 @@
         android:textColorHint="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.376"
+        app:layout_constraintHorizontal_bias="0.387"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.114" />
+        app:layout_constraintVertical_bias="0.197" />
 
     <EditText
         android:id="@+id/description"
@@ -48,6 +63,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintVertical_bias="0.209" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

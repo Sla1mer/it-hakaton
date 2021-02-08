@@ -6,10 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".Users.MainActivity">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Новости"
+        android:textColor="#000"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv" />
+        android:id="@+id/rv"
+        android:layout_width="375dp"
+        android:layout_height="647dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/recyclerOfBD"
@@ -20,10 +39,19 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
 
+    <ImageView
+        android:id="@+id/addImage"
+        android:layout_width="76dp"
+        android:layout_height="63dp"
+        android:src="@drawable/add"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerOfBD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recyclerOfBD"
+        app:layout_constraintTop_toTopOf="@+id/recyclerOfBD" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
