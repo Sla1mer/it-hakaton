@@ -58,7 +58,13 @@ public class UsersAdapterInDB extends RecyclerView.Adapter<UsersAdapterInDB.View
         public void onClick(View v) {
             int position = getAdapterPosition();
             //ItemForDBForAdmin parseItem = arrayList.get(position); //- не удалять
-            context.startActivity(new Intent(context, UsersInDBActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            context.startActivity(new Intent(context, UsersInDBActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra("name_db", arrayList.get(position).getDB()));
         }
     }
+
+    public void filterList(ArrayList<ItemForDBForAdmin> filterList){
+        arrayList = filterList;
+        notifyDataSetChanged();
+    }
+
 }

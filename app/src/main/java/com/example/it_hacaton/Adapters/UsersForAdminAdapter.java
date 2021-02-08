@@ -37,6 +37,7 @@ public class UsersForAdminAdapter extends RecyclerView.Adapter<UsersForAdminAdap
         ItemUsersForAdmin parseItem = parseItems.get(position);
         holder.name.setText(parseItem.getName());
         holder.middleName.setText(parseItem.getMiddleName());
+        holder.surname.setText(parseItem.getLastName());
     }
 
     @Override
@@ -45,12 +46,19 @@ public class UsersForAdminAdapter extends RecyclerView.Adapter<UsersForAdminAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, middleName, cancel;
+        TextView name, middleName, cancel, surname;
         public ViewHolder(@NonNull View v) {
             super(v);
             name = v.findViewById(R.id.name);
             middleName = v.findViewById(R.id.midleName);
+            surname = v.findViewById(R.id.midleName2);
             cancel = v.findViewById(R.id.cancel);
         }
     }
+
+    public void filterList(ArrayList<ItemUsersForAdmin> filterList){
+        parseItems = filterList;
+        notifyDataSetChanged();
+    }
+
 }

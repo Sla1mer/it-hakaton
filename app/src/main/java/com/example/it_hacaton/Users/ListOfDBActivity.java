@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.EditText;
 
 import com.example.it_hacaton.API.ApiClient;
@@ -36,6 +38,23 @@ public class ListOfDBActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
         apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
         Call<List<GetListNameDB>> call = apiInterface.get_list_name_db();
         call.enqueue(new Callback<List<GetListNameDB>>() {
@@ -63,6 +82,17 @@ public class ListOfDBActivity extends AppCompatActivity {
         rv = findViewById(R.id.rv);
         search = findViewById(R.id.search);
     }
+
+    private void filter(String text){
+        ArrayList<ItemForDBForAdmin> array = new ArrayList<>();
+        for(ItemForDBForAdmin item : arrayList){
+            if(item.getDB().toLowerCase().contains(text.toLowerCase())){
+                array.add(item);
+            }
+        }
+        adapter.filterList(array);
+    }
+
 
 
 }
