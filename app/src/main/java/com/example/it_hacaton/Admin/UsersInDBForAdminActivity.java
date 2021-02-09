@@ -47,6 +47,7 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         Intent intent = getIntent();
         name_db = intent.getStringExtra("name_db");
 
+        rv = findViewById(R.id.rv);
         final Timer time = new Timer();
         getSupportActionBar().hide();
 
@@ -67,7 +68,8 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
                 filter(s.toString());
             }
         });
-
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(this));
         time.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -94,7 +96,6 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
             }
         }, 0, 4000); //(4000 - ПОДОЖДАТЬ ПЕРЕД НАЧАЛОМ В МИЛИСЕК, ПОВТОРЯТСЯ 4 СЕКУНДЫ (1 СЕК = 1000 МИЛИСЕК))
 
-        rv = findViewById(R.id.rv);
         addImage = findViewById(R.id.addImage);
         addImage.setOnClickListener(new View.OnClickListener() {
             @Override//
@@ -103,8 +104,7 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
             }
         });
 
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(this));//
+
 
     }
 

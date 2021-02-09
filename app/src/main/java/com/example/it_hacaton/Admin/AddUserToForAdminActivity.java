@@ -55,6 +55,7 @@ public class AddUserToForAdminActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<AddPersonFromDBPersonal> call, Response<AddPersonFromDBPersonal> response) {
                         Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), ListOfDBForAdminActivity.class));
                     }
 
                     @Override

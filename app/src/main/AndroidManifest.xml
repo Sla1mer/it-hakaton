@@ -14,24 +14,36 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ithacaton">
-        <activity android:name=".Users.CreateNewsActivity"></activity>
-        <activity android:name=".Users.UsersInDBActivity" />
-        <activity android:name=".Users.ListOfDBActivity" />
-        <activity android:name=".Users.MainActivity" />
-        <activity android:name=".Admin.AddUserToForAdminActivity" />
-        <activity android:name=".Admin.AddDBForAdminActivity" />
-        <activity android:name=".Admin.UsersInDBForAdminActivity" />
-        <activity android:name=".Admin.CreateNewsForAdminActivity" />
-        <activity android:name=".Admin.ListOfDBForAdminActivity" />
-        <activity android:name=".Admin.RegistrationActivity" />
-        <activity android:name=".Admin.LoginActivity">
+        <activity android:name=".Users.CreateNewsActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Users.UsersInDBActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Users.ListOfDBActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Users.MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.AddUserToForAdminActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.AddDBForAdminActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.MainForAdminActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.UsersInDBForAdminActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.CreateNewsForAdminActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.ListOfDBForAdminActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.RegistrationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Admin.MainForAdminActivity" />
     </application>
 
 </manifest>
