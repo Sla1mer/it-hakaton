@@ -10,10 +10,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
 import com.example.it_hacaton.Adapters.Adapter;
+import com.example.it_hacaton.Admin.CreateNewsForAdminActivity;
 import com.example.it_hacaton.Items.Item;
 import com.example.it_hacaton.Items.ItemForDBForAdmin;
 import com.example.it_hacaton.R;
@@ -31,6 +34,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rv;
     private Button btnToDB;
+    private ImageView imageView;
 
     private AdapterUser adapter;
     private ArrayList<Item> arrayList = new ArrayList<>();
@@ -75,11 +79,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), CreateNewsForAdminActivity.class));
+            }
+        });
+
     }
 
     private void init(){
         rv = findViewById(R.id.rv);
         btnToDB = findViewById(R.id.recyclerOfBD);
+        imageView = findViewById(R.id.addImage);
     }
 
     @Override
