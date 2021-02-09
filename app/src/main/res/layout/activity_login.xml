@@ -79,34 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.123" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.154">
 
-        <TextView
-            android:id="@+id/forgetText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Забыли пароль" />
-
-        <TextView
-            android:layout_width="45dp"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/regText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Зарегистрироваться" />
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/enter"

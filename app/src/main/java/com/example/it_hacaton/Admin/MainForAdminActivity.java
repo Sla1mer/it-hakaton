@@ -27,6 +27,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainForAdminActivity extends AppCompatActivity {
+    private Button regText;
     private RecyclerView rv;
     private Adapter adapter;
     private ArrayList<Item> arrayList = new ArrayList<>();
@@ -44,6 +45,14 @@ public class MainForAdminActivity extends AppCompatActivity {
 
         apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
         Call<List<Event>> call = apiInterface.get_events();
+
+
+        regText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
+            }
+        });
 
         call.enqueue(new Callback<List<Event>>() {
             @Override
@@ -86,6 +95,7 @@ public class MainForAdminActivity extends AppCompatActivity {
         rv = findViewById(R.id.rv);
         rvOfBD = findViewById(R.id.recyclerOfBD);
         addImage = findViewById(R.id.addImage);
+        regText = findViewById(R.id.addNewUser);
     }
 
     @Override

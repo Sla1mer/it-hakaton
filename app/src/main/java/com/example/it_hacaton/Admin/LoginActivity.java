@@ -27,7 +27,7 @@ import com.example.it_hacaton.R;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText email, password;
-    private TextView regText, forgetText;
+
     private Button enter;
     private ApiInterface apiInterface;
     @Override
@@ -75,21 +75,16 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         });
                         break;
-                    case R.id.regText:
-                        startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
-                        break;
+
                 }
             }
         };
-        regText.setOnClickListener(BTNs);
         enter.setOnClickListener(BTNs);
     }
 
     private void init(){
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        regText = findViewById(R.id.regText);
-        forgetText = findViewById(R.id.forgetText);
         enter = findViewById(R.id.enter);
     }
 
