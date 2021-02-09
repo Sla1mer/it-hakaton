@@ -6,101 +6,119 @@
     android:layout_height="match_parent"
     tools:context=".Admin.CreateNewsForAdminActivity">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Добавить новость"
-        android:textColor="#000"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-
-    <ImageView
-        android:layout_width="64dp"
-        android:layout_height="62dp"
-        android:src="@drawable/account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.097"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.074" />
-
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="318dp"
-        android:layout_height="49dp"
-        android:hint="Имя (Необязательно)"
-        android:textColorHint="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.354"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.29" />
-
-    <EditText
-        android:id="@+id/middleName"
-        android:layout_width="318dp"
-        android:layout_height="49dp"
-        android:hint="Отчество (Необязательно)"
-        android:textColorHint="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.354"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.04" />
-
-    <EditText
-        android:id="@+id/surname"
-        android:layout_width="318dp"
-        android:layout_height="49dp"
-        android:hint="Фамилия (Необязательно)"
-        android:textColorHint="#000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.354"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/middleName"
-        app:layout_constraintVertical_bias="0.066" />
-
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="315dp"
-        android:layout_height="76dp"
-        android:hint="Текст"
-        android:inputType="textAutoComplete"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColorHint="#000"
-        app:layout_constraintHorizontal_bias="0.354"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="360dp"
+        android:layout_height="627dp"
+        android:background="@drawable/bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/surname"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/create"
-        android:layout_width="268dp"
-        android:layout_height="55dp"
-        android:backgroundTint="@color/cardview_dark_background"
-        android:text="Создать"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description"
-        app:layout_constraintVertical_bias="0.53" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить новость"
+            android:textColor="#000"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023" />
+
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="62dp"
+            android:src="@drawable/account"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.097"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintVertical_bias="0.074" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="318dp"
+            android:layout_height="49dp"
+            android:background="@drawable/editbg"
+            android:hint="Имя (Необязательно)"
+            android:paddingLeft="20dp"
+            android:textColorHint="#000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.357"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.33" />
+
+        <EditText
+            android:id="@+id/middleName"
+            android:layout_width="318dp"
+            android:layout_height="49dp"
+            android:background="@drawable/editbg"
+            android:hint="Отчество (Необязательно)"
+            android:paddingLeft="20dp"
+            android:textColorHint="#000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.354"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintVertical_bias="0.04" />
+
+        <EditText
+            android:id="@+id/surname"
+            android:layout_width="318dp"
+            android:layout_height="49dp"
+            android:background="@drawable/editbg"
+            android:hint="Фамилия (Необязательно)"
+            android:paddingLeft="20dp"
+            android:textColorHint="#000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.354"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/middleName"
+            app:layout_constraintVertical_bias="0.066" />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="318dp"
+            android:layout_height="49dp"
+            android:background="@drawable/editbg"
+            android:hint="Текст"
+            android:inputType="textAutoComplete"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="#000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.354"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/surname"
+            app:layout_constraintVertical_bias="0.093" />
+
+        <Button
+            android:id="@+id/create"
+            android:layout_width="268dp"
+            android:layout_height="55dp"
+            android:backgroundTint="@color/cardview_dark_background"
+            android:text="Создать"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description"
+            app:layout_constraintVertical_bias="0.53" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
