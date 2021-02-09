@@ -35,7 +35,7 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Item parseItem = arrayList.get(position);
-        if (arrayList.get(position).getName() == null)
+        if (arrayList.get(position).getName().equals(""))
         {
             holder.name.setText("Объявление!");
             holder.name.setTextColor(Color.parseColor("#e34234"));

@@ -9,7 +9,7 @@ public class Event {
     @Expose
     @SerializedName("description") private String description;
     @Expose
-    @SerializedName("to_subject") private String to_subject;
+    @SerializedName("to_object") private String to_object;
 
     public int getId() {
         return id;
@@ -28,10 +28,10 @@ public class Event {
     }
 
     public String getTo_subject() {
-        return to_subject;
+        return to_object;
     }
 
     public void setTo_subject(String to_subject) {
-        this.to_subject = to_subject;
+        this.to_object = to_object;
     }
 }
