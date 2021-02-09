@@ -55,44 +55,6 @@ public class UserAdminService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
-//        Intent intent2 = new Intent(this, MainForAdminActivity.class);
-//        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
-//
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-//        builder.setSmallIcon(R.mipmap.ic_launcher);
-//        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
-
-
-
-//        createNotificationChannel();
-//
-//        apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
-//        Call<List<Event>> call = apiInterface.get_events();
-//        call.enqueue(new Callback<List<Event>>() {
-//            @Override
-//            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
-//                List<Event> object = response.body();
-//                for (Event event : object) {
-//                    arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
-//                }
-//                String bigText = arrayList.get(arrayList.size() - 1).getDescription();
-//                Intent intent2 = new Intent(getApplicationContext(), MainForAdminActivity.class);
-//                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent2, 0);
-//                Notification notification = new NotificationCompat.Builder(getApplicationContext(), "ChannelId1")
-//                        .setContentTitle("IT-HAKATON")
-//                        .setContentText(arrayList.get(arrayList.size() - 1).getDescription())
-//                        .setSmallIcon(R.mipmap.ic_launcher)
-//                        .setStyle(new NotificationCompat.BigTextStyle().bigText(bigText))
-//                        .setContentIntent(pendingIntent).build();
-//                startForeground(1, notification);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Event>> call, Throwable t) {
-//
-//            }
-//        });
         Intent intent2 = new Intent(getApplicationContext(), MainForAdminActivity.class);
         PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intent2, 0);
 
