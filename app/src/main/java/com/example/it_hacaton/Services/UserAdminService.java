@@ -40,6 +40,8 @@ public class UserAdminService extends Service {
     public static final String CHANNEL_ID = "hakaton";
     private ApiInterface apiInterface;
     private ArrayList<Item> arrayList = new ArrayList<>();
+    private int size = 0;
+    private int count = 0;
 
     @Override
     public void onCreate() {
@@ -91,13 +93,33 @@ public class UserAdminService extends Service {
 //
 //            }
 //        });
+        Intent intent2 = new Intent(getApplicationContext(), MainForAdminActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intent2, 0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+        builder.setContentTitle("IT-HAKATON");
+        builder.setContentText("Отслеживание сообщений");
+        builder.setStyle(new NotificationCompat.BigTextStyle().bigText("Отслеживание сообщений"));
+        builder.setContentIntent(pi).build();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            builder.setChannelId("notification_id");
+        }
+// Add additional:
+// [adaptive Android8.0] set NotificationChannel to NotificationManager object
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+            NotificationChannel channel = new NotificationChannel("notification_id", "notification_name", NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        startForeground(1, builder.build());
         final Timer time = new Timer();
         time.schedule(new TimerTask() {
             @Override
             public void run() {
-                int size = 0;
-                int count = 0;
-                arrayList.clear();//ПЕРЕЗАГРУЖАЕМ МЕТОД RUN В КОТОРОМ ДЕЛАЕТЕ ТО ЧТО ВАМ НАДО
+                arrayList.clear();
                 apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
                 Call<List<Event>> call = apiInterface.get_events();
                 call.enqueue(new Callback<List<Event>>() {
@@ -108,30 +130,29 @@ public class UserAdminService extends Service {
                             arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
                         }
 
+                        if (arrayList.size() != size && count != 0)
+                        {
+                            String bigText = arrayList.get(arrayList.size() - 1).getDescription();
+                            Intent intent2 = new Intent(getApplicationContext(), MainForAdminActivity.class);
+                            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intent2, 0);
 
-                        String bigText = arrayList.get(arrayList.size() - 1).getDescription();
-                        Intent intent2 = new Intent(getApplicationContext(), MainForAdminActivity.class);
-                        PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intent2, 0);
-
-                        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
-                        builder.setSmallIcon(R.mipmap.ic_launcher);
-                        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
-                        builder.setContentTitle("IT-HAKATON");
-                        builder.setContentText("Отслеживание сообщений");
-                        builder.setStyle(new NotificationCompat.BigTextStyle().bigText("Отслеживание сообщений"));
-                        builder.setContentIntent(pi).build();
-                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            builder.setChannelId("notification_id");
+                            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
+                            builder.setSmallIcon(R.mipmap.ic_launcher);
+                            builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+                            builder.setContentTitle("IT-HAKATON");
+                            builder.setContentText(String.valueOf(bigText));
+                            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText));
+                            builder.setContentIntent(pi).build();
+                            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                builder.setChannelId("notification_id");
+                            }
+                            startForeground(1, builder.build());
+                            size = arrayList.size();
+                        }else {
+                            size = arrayList.size();
+                            count = 1;
                         }
-// Add additional:
-// [adaptive Android8.0] set NotificationChannel to NotificationManager object
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-                            NotificationChannel channel = new NotificationChannel("notification_id", "notification_name", NotificationManager.IMPORTANCE_HIGH);
-                            notificationManager.createNotificationChannel(channel);
-                        }
 
-                        startForeground(1, builder.build());
                     }
 
                     @Override
@@ -139,28 +160,6 @@ public class UserAdminService extends Service {
 
                     }
                 });
-
-                if (arrayList.size() != size && count != 0)
-                {
-                    String bigText = arrayList.get(arrayList.size() - 1).getDescription();
-                    Intent intent2 = new Intent(getApplicationContext(), MainForAdminActivity.class);
-                    PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intent2, 0);
-
-                    NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
-                    builder.setSmallIcon(R.mipmap.ic_launcher);
-                    builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
-                    builder.setContentTitle("IT-HAKATON");
-                    builder.setContentText(bigText);
-                    builder.setStyle(new NotificationCompat.BigTextStyle().bigText(bigText));
-                    builder.setContentIntent(pi).build();
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        builder.setChannelId("notification_id");
-                    }
-                    size = arrayList.size();
-                }else {
-                    size = arrayList.size();
-                    count = 1;
-                }
             }
         }, 0, 4000);
         return START_NOT_STICKY;
