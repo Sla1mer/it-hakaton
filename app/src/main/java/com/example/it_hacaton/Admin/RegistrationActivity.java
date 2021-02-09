@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +41,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         fullname = intent.getStringExtra("fullname");
-        System.out.println(fullname);
+        System.out.println(fullname + " rtyuio");
     }
 
     private void onCLicks(){
@@ -79,7 +80,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
 
                         apiInterface2 = ApiClient.getAppClient().create(ApiInterface.class);
-                        Call<Event> call2 = apiInterface.add_event(fullname + " " +
+                        Call<Event> call2 = apiInterface.add_event(LoginActivity.fullname + " " +
                                 "добавил " + surname.getText().toString() + " " +
                                 name.getText().toString() + " " + middleName.getText().toString() +
                                 " в систему ", null);

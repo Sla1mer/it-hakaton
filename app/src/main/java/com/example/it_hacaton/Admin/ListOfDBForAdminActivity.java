@@ -41,6 +41,7 @@ public class ListOfDBForAdminActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         fullname = intent.getStringExtra("fullname");
+        System.out.println(fullname + " rtyuio");
 
         init();
         getSupportActionBar().hide();
@@ -90,7 +91,7 @@ public class ListOfDBForAdminActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new AdapterForDBList_ForAdmin(arrayList, getApplicationContext(), fullname);
+        adapter = new AdapterForDBList_ForAdmin(arrayList, getApplicationContext());
         rv.setAdapter(adapter);
 
     }

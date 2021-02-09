@@ -57,6 +57,7 @@ public class MainForAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), RegistrationActivity.class).putExtra("fullname", fullname));
+                System.out.println(fullname + " dasdasdfasfas");
             }
         });
 

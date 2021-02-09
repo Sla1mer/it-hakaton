@@ -70,7 +70,7 @@ public class AddUserToForAdminActivity extends AppCompatActivity {
                 });
 
                 apiInterface2 = ApiClient.getAppClient().create(ApiInterface.class);
-                Call<Event> call2 = apiInterface.add_event(fullname + " " +
+                Call<Event> call2 = apiInterface.add_event(LoginActivity.fullname + " " +
                         "добавил " + last_name.getText().toString() +
                         " " + name.getText().toString() + " " + middle_name.getText().toString() +
                         " в базу данных " + name_db, last_name.getText().toString() +

@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button enter;
     private ApiInterface apiInterface;
-    private String fullname = null;
+    public static String fullname = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                                     fullname = u.getLast_name() + " " + u.getName() +
                                     " " + u.getMiddle_name();
                                 }
+
 
                                 assert usersList != null;
                                 if (usersList.size() > 0) {

@@ -34,6 +34,7 @@ public class AddDBForAdminActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         fullname = intent.getStringExtra("fullname");
+        System.out.println(fullname + " rtyuio");
 
         name_db = findViewById(R.id.name_db);
         create = findViewById(R.id.create);
@@ -58,7 +59,7 @@ public class AddDBForAdminActivity extends AppCompatActivity {
                 });
 
                 apiInterface2 = ApiClient.getAppClient().create(ApiInterface.class);
-                Call<Event> call2 = apiInterface.add_event(fullname + " " +
+                Call<Event> call2 = apiInterface.add_event(LoginActivity.fullname + " " +
                         "добавил новую базу данных (" + name_db.getText().toString() + ")", null);
 
                 call2.enqueue(new Callback<Event>() {
