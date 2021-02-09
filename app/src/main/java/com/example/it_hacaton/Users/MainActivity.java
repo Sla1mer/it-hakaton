@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), CreateNewsForAdminActivity.class));
+                startActivity(new Intent(getApplicationContext(), CreateNewsActivity.class));
             }
         });
 
