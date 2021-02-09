@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button enter;
     private ApiInterface apiInterface;
+    private String fullname = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,14 +58,16 @@ public class LoginActivity extends AppCompatActivity {
 
                                 for (User u : usersList) {
                                     user.setStatus(u.getStatus());
+                                    fullname = u.getLast_name() + " " + u.getName() +
+                                    " " + u.getMiddle_name();
                                 }
 
                                 assert usersList != null;
                                 if (usersList.size() > 0) {
                                     if (user.getStatus().equals("Сисадмин")) {
-                                        startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
+                                        startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class).putExtra("fullname", fullname));
                                     } else {
-                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class).putExtra("fullname", fullname));
                                     }
                                 }
                             }

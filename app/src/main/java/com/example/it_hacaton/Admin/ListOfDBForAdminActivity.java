@@ -33,17 +33,21 @@ public class ListOfDBForAdminActivity extends AppCompatActivity {
     private AdapterForDBList_ForAdmin adapter;
     private ArrayList<ItemForDBForAdmin> arrayList = new ArrayList<>();
     private ApiInterface apiInterface;
+    private String fullname = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_d_b_for_admin);
+
+        Intent intent = getIntent();
+        fullname = intent.getStringExtra("fullname");
 
         init();
         getSupportActionBar().hide();
         addImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AddDBForAdminActivity.class));
+                startActivity(new Intent(getApplicationContext(), AddDBForAdminActivity.class).putExtra("fullname", fullname));
             }
         });
 
@@ -86,7 +90,7 @@ public class ListOfDBForAdminActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new AdapterForDBList_ForAdmin(arrayList, getApplicationContext());
+        adapter = new AdapterForDBList_ForAdmin(arrayList, getApplicationContext(), fullname);
         rv.setAdapter(adapter);
 
     }

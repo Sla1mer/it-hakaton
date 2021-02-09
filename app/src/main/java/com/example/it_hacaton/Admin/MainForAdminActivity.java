@@ -34,6 +34,8 @@ public class MainForAdminActivity extends AppCompatActivity {
     private Button rvOfBD;
     private ImageView addImage;
     private ApiInterface apiInterface;
+    private String fullname = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,9 @@ public class MainForAdminActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
         getSupportActionBar().hide();
+
+        Intent intent = getIntent();
+        fullname = intent.getStringExtra("fullname");
 
         apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
         Call<List<Event>> call = apiInterface.get_events();
@@ -83,7 +88,7 @@ public class MainForAdminActivity extends AppCompatActivity {
                 if(v.getId() == R.id.addImage){
                     startActivity(new Intent(getApplicationContext(), CreateNewsForAdminActivity.class));
                 }else if(v.getId() == R.id.recyclerOfBD){
-                    startActivity(new Intent(getApplicationContext(), ListOfDBForAdminActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ListOfDBForAdminActivity.class).putExtra("fullname", fullname));
                 }
             }
         };

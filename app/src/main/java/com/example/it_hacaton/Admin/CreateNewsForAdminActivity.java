@@ -37,7 +37,6 @@ private ApiInterface apiInterface;
                 if (name.getText().toString().equals("") && middle_name.getText().toString().equals("") &&
                         last_name.getText().toString().equals("")) {
 
-
                     Call<Event> call = apiInterface.add_event(description.getText().toString(), null);
 
                     call.enqueue(new Callback<Event>() {

@@ -37,6 +37,8 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
     private ApiInterface apiInterface;
     private ApiInterface apiInterface2;
     private String name_db;
+    private String fullname;
+
  private ImageView addImage;
     private UsersForAdminAdapter adapter;
     private ArrayList<ItemUsersForAdmin> arrayList = new ArrayList<>();
@@ -46,6 +48,7 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_users_in_d_b_for_admin);
         Intent intent = getIntent();
         name_db = intent.getStringExtra("name_db");
+        fullname = intent.getStringExtra("fullname");
 
         rv = findViewById(R.id.rv);
         final Timer time = new Timer();
@@ -100,7 +103,9 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         addImage.setOnClickListener(new View.OnClickListener() {
             @Override//
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), AddUserToForAdminActivity.class).putExtra("name_db", name_db));
+                startActivity(new Intent(getApplicationContext(), AddUserToForAdminActivity.class)
+                        .putExtra("name_db", name_db)
+                        .putExtra("fullname", fullname));
             }
         });
 

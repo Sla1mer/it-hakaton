@@ -20,10 +20,12 @@ public class AdapterForDBList_ForAdmin extends RecyclerView.Adapter<AdapterForDB
 
     private ArrayList<ItemForDBForAdmin> arrayList;
     private Context context;
+    private String fullname;
 
-    public AdapterForDBList_ForAdmin(ArrayList<ItemForDBForAdmin> arrayList, Context context) {
+    public AdapterForDBList_ForAdmin(ArrayList<ItemForDBForAdmin> arrayList, Context context, String fullname) {
         this.arrayList = arrayList;
         this.context = context;
+        this.fullname = fullname;
     }
 
     @NonNull
@@ -56,7 +58,10 @@ public class AdapterForDBList_ForAdmin extends RecyclerView.Adapter<AdapterForDB
         public void onClick(View v) {
             int position = getAdapterPosition();
             //ItemForDBForAdmin parseItem = arrayList.get(position); //- не удалять
-            context.startActivity(new Intent(context, UsersInDBForAdminActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtra("name_db", arrayList.get(position).getDB()));
+            context.startActivity(new Intent(context, UsersInDBForAdminActivity.class)
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .putExtra("name_db", arrayList.get(position).getDB())
+                    .putExtra("fullname", fullname));
         }
     }
 
