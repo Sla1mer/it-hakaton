@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 for (Event event : object) {
                     arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
                     adapter.notifyDataSetChanged();
+                    rv.smoothScrollToPosition(adapter.getItemCount());
                 }
             }
 

@@ -55,7 +55,7 @@ public class MainForAdminActivity extends AppCompatActivity {
         regText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegistrationActivity.class).putExtra("fullname", fullname));
             }
         });
 
@@ -66,6 +66,7 @@ public class MainForAdminActivity extends AppCompatActivity {
                 for (Event event : object) {
                     arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
                     adapter.notifyDataSetChanged();
+                    rv.smoothScrollToPosition(adapter.getItemCount());
                 }
             }
 

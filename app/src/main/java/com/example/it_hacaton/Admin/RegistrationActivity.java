@@ -18,6 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import com.example.it_hacaton.R;
+import com.example.it_hacaton.model.Event;
 import com.example.it_hacaton.model.User;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -25,7 +26,10 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText email, password, name, middleName, surname;
     private Button registration;
     private ApiInterface apiInterface;
+    private ApiInterface apiInterface2;
     private String status;
+    private String fullname = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,9 @@ public class RegistrationActivity extends AppCompatActivity {
         init();
         onCLicks();
         getSupportActionBar().hide();
+
+        Intent intent = getIntent();
+        fullname = intent.getStringExtra("fullname");
     }
 
     private void onCLicks(){
@@ -66,6 +73,26 @@ public class RegistrationActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(Call<User> call, Throwable t) {
                                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+
+                        apiInterface2 = ApiClient.getAppClient().create(ApiInterface.class);
+                        Call<Event> call2 = apiInterface.add_event(fullname + " " +
+                                "добавил " + surname.getText().toString() + " " +
+                                name.getText().toString() + " " + middleName.getText().toString() +
+                                " в систему ", null);
+
+                        call2.enqueue(new Callback<Event>() {
+                            @Override
+                            public void onResponse(Call<Event> call, Response<Event> response) {
+                                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
+                            }
+
+                            @Override
+                            public void onFailure(Call<Event> call, Throwable t) {
+
                             }
                         });
                         break;
