@@ -189,7 +189,7 @@
         android:layout_width="306dp"
         android:layout_height="54dp"
         android:backgroundTint="@color/cardview_dark_background"
-        android:text="Зарегистрироваться"
+        android:text="Зарегистрировать"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.438"
