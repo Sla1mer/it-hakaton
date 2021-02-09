@@ -63,6 +63,19 @@ public class UserService extends Service {
                         for (Event event : object) {
                             arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
                         }
+                        if (arrayList.get(arrayList.size() - 1).getName().equals(LoginActivity.fullname))
+                        {
+                            String bigText = arrayList.get(arrayList.size() - 1).getDescription();
+                            Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
+                            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent2, 0);
+                            Notification notification = new NotificationCompat.Builder(getApplicationContext(), "ChannelId1")
+                                    .setContentTitle("IT-HAKATON")
+                                    .setContentText(arrayList.get(arrayList.size() - 1).getDescription())
+                                    .setSmallIcon(R.mipmap.ic_launcher)
+                                    .setStyle(new NotificationCompat.BigTextStyle().bigText(bigText))
+                                    .setContentIntent(pendingIntent).build();
+                            startForeground(1, notification);
+                        }
                     }
 
                     @Override
@@ -70,20 +83,6 @@ public class UserService extends Service {
 
                     }
                 });
-
-                if (arrayList.get(arrayList.size() - 1).getName().equals(LoginActivity.fullname))
-                {
-                    String bigText = arrayList.get(arrayList.size() - 1).getDescription();
-                    Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
-                    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent2, 0);
-                    Notification notification = new NotificationCompat.Builder(getApplicationContext(), "ChannelId1")
-                            .setContentTitle("IT-HAKATON")
-                            .setContentText(arrayList.get(arrayList.size() - 1).getDescription())
-                            .setSmallIcon(R.mipmap.ic_launcher)
-                            .setStyle(new NotificationCompat.BigTextStyle().bigText(bigText))
-                            .setContentIntent(pendingIntent).build();
-                    startForeground(1, notification);
-                }
             }
         }, 0, 4000);
         return START_NOT_STICKY;
