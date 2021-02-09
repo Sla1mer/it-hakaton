@@ -5,8 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +23,7 @@ import com.example.it_hacaton.Admin.CreateNewsForAdminActivity;
 import com.example.it_hacaton.Items.Item;
 import com.example.it_hacaton.Items.ItemForDBForAdmin;
 import com.example.it_hacaton.R;
+import com.example.it_hacaton.Services.UserService;
 import com.example.it_hacaton.UserAdapter.AdapterUser;
 import com.example.it_hacaton.model.Event;
 import com.example.it_hacaton.model.GetListNameDB;
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private AdapterUser adapter;
     private ArrayList<Item> arrayList = new ArrayList<>();
     private ApiInterface apiInterface;
+    public static final String CHANNEL_ID = "hakaton";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,16 +62,16 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
                 List<Event> object = response.body();
                 for (Event event : object) {
-                    arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
-                    adapter.notifyDataSetChanged();
-                    rv.smoothScrollToPosition(adapter.getItemCount());
-                }
+                arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
+                adapter.notifyDataSetChanged();
+                rv.smoothScrollToPosition(adapter.getItemCount());
             }
+        }
 
-            @Override
-            public void onFailure(Call<List<Event>> call, Throwable t) {
+        @Override
+        public void onFailure(Call<List<Event>> call, Throwable t) {
 
-            }
+        }
         });
 
         adapter = new AdapterUser(this, arrayList);
@@ -87,6 +92,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        createNotificationChannel();
+        startService();
+
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel serviceChannel = new NotificationChannel(
+                    CHANNEL_ID,
+                    "IT-HAKATON",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(serviceChannel);
+        }
+    }
+
+    private void startService() {
+        Intent serviceIntent = new Intent(this, UserService.class);
+        startService(serviceIntent);
     }
 
     private void init(){

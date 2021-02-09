@@ -5,8 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +20,7 @@ import com.example.it_hacaton.API.ApiInterface;
 import com.example.it_hacaton.Adapters.Adapter;
 import com.example.it_hacaton.Items.Item;
 import com.example.it_hacaton.R;
+import com.example.it_hacaton.Services.UserAdminService;
 import com.example.it_hacaton.model.Event;
 
 import java.util.ArrayList;
@@ -35,6 +39,7 @@ public class MainForAdminActivity extends AppCompatActivity {
     private ImageView addImage;
     private ApiInterface apiInterface;
     private String fullname = null;
+    public static final String CHANNEL_ID = "hakaton";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +87,26 @@ public class MainForAdminActivity extends AppCompatActivity {
         rv.setAdapter(adapter);
 
         onCLicks();
+        createNotificationChannel();
+        startService();
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel serviceChannel = new NotificationChannel(
+                    CHANNEL_ID,
+                    "IT-HAKATON",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(serviceChannel);
+        }
+    }
+
+    private void startService() {
+        Intent serviceIntent = new Intent(this, UserAdminService.class);
+        startService(serviceIntent);
     }
 
     private void onCLicks(){
