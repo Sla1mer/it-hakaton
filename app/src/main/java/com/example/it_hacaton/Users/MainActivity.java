@@ -1,5 +1,6 @@
 package com.example.it_hacaton.Users;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,7 @@ import com.example.it_hacaton.Admin.CreateNewsForAdminActivity;
 import com.example.it_hacaton.Items.Item;
 import com.example.it_hacaton.Items.ItemForDBForAdmin;
 import com.example.it_hacaton.R;
+import com.example.it_hacaton.Services.UserAdminService;
 import com.example.it_hacaton.Services.UserService;
 import com.example.it_hacaton.UserAdapter.AdapterUser;
 import com.example.it_hacaton.model.Event;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private ApiInterface apiInterface;
     public static final String CHANNEL_ID = "hakaton";
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         createNotificationChannel();
+        stopService();
         startService();
 
     }
@@ -110,9 +114,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void startService() {
-        Intent serviceIntent = new Intent(this, UserService.class);
-        startService(serviceIntent);
+        Intent serviceIntent = new Intent(getApplicationContext(), UserService.class);
+        startForegroundService(serviceIntent);
+    }
+
+    private void stopService() {
+        Intent serviceIntent = new Intent(getApplicationContext(), UserService.class);
+        stopService(serviceIntent);
     }
 
     private void init(){

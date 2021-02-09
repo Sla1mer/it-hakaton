@@ -19,13 +19,18 @@ import android.widget.ImageView;
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
 import com.example.it_hacaton.Adapters.Adapter;
+import com.example.it_hacaton.Adapters.UsersForAdminAdapter;
 import com.example.it_hacaton.Items.Item;
+import com.example.it_hacaton.Items.ItemUsersForAdmin;
 import com.example.it_hacaton.R;
 import com.example.it_hacaton.Services.UserAdminService;
 import com.example.it_hacaton.model.Event;
+import com.example.it_hacaton.model.GetPersonFromDBPersonal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,6 +64,7 @@ public class MainForAdminActivity extends AppCompatActivity {
         apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
         Call<List<Event>> call = apiInterface.get_events();
 
+        final Timer time = new Timer();
 
         regText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +73,7 @@ public class MainForAdminActivity extends AppCompatActivity {
                 System.out.println(fullname + " dasdasdfasfas");
             }
         });
+
 
         call.enqueue(new Callback<List<Event>>() {
             @Override
@@ -89,6 +96,7 @@ public class MainForAdminActivity extends AppCompatActivity {
         rv.setAdapter(adapter);
 
         onCLicks();
+        stopService();
         startService();
     }
 
@@ -97,6 +105,13 @@ public class MainForAdminActivity extends AppCompatActivity {
         Intent serviceIntent = new Intent(getApplicationContext(), UserAdminService.class);
         startForegroundService(serviceIntent);
     }
+
+    private void stopService() {
+        Intent serviceIntent = new Intent(getApplicationContext(), UserAdminService.class);
+        stopService(serviceIntent);
+    }
+
+
 
     private void onCLicks(){
         View.OnClickListener BTNs = new View.OnClickListener(){
