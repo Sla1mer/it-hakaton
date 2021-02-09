@@ -28,7 +28,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private ApiInterface apiInterface;
     private ApiInterface apiInterface2;
     private String status;
-    private String fullname = null;
+    private String fullname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         fullname = intent.getStringExtra("fullname");
+        System.out.println(fullname);
     }
 
     private void onCLicks(){

@@ -47,6 +47,7 @@ public class MainForAdminActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         fullname = intent.getStringExtra("fullname");
+        System.out.println(fullname);
 
         apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
         Call<List<Event>> call = apiInterface.get_events();

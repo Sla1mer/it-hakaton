@@ -40,6 +40,7 @@ public class AddUserToForAdminActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         String name_db = intent.getStringExtra("name_db");
         fullname = intent.getStringExtra("fullname");
+        System.out.println(fullname);
 
         last_name = findViewById(R.id.surname);
         name = findViewById(R.id.name);
