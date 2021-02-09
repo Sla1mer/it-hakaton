@@ -92,7 +92,7 @@ public class UserService extends Service {
                             arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
                         }
 
-                        if (arrayList.size() != size && arrayList.get(arrayList.size() - 1).getName().trim().equals(LoginActivity.fullname.trim()) && count != 0)
+                        if (arrayList.size() > size && arrayList.get(arrayList.size() - 1).getName().trim().equals(LoginActivity.fullname.trim()) && count != 0)
                         {
                             String bigText = arrayList.get(arrayList.size() - 1).getDescription();
                             Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);

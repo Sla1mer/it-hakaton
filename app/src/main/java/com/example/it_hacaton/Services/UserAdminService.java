@@ -50,6 +50,7 @@ public class UserAdminService extends Service {
 
     @Override
     public void onDestroy() {
+        stopSelf();
         super.onDestroy();
     }
 
@@ -92,7 +93,7 @@ public class UserAdminService extends Service {
                             arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
                         }
 
-                        if (arrayList.size() != size && count != 0)
+                        if (arrayList.size() > size && count != 0)
                         {
                             String bigText = arrayList.get(arrayList.size() - 1).getDescription();
                             Intent intent2 = new Intent(getApplicationContext(), MainForAdminActivity.class);

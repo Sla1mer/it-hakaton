@@ -40,7 +40,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rv;
     private Button btnToDB;
-    private ImageView imageView;
+    private ImageView imageView, refresh;
 
     private AdapterUser adapter;
     private ArrayList<Item> arrayList = new ArrayList<>();
@@ -95,6 +95,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        arrayList.clear();
+        adapter.notifyDataSetChanged();
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+                Call<List<Event>> call = apiInterface.get_events();
+
+                call.enqueue(new Callback<List<Event>>() {
+                    @Override
+                    public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+                        List<Event> object = response.body();
+                        for (Event event : object) {
+                            arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
+                            adapter.notifyDataSetChanged();
+                            rv.smoothScrollToPosition(adapter.getItemCount());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Event>> call, Throwable t) {
+
+                    }
+                });
+
+                adapter = new AdapterUser(getApplicationContext(), arrayList);
+                rv.setAdapter(adapter);
+            }
+        });
+
         createNotificationChannel();
         stopService();
         startService();
@@ -129,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
         rv = findViewById(R.id.rv);
         btnToDB = findViewById(R.id.recyclerOfBD);
         imageView = findViewById(R.id.addImage);
+        refresh = findViewById(R.id.refresh);
     }
 
     @Override

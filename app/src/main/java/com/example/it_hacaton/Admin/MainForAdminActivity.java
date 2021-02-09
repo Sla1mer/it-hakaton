@@ -42,7 +42,7 @@ public class MainForAdminActivity extends AppCompatActivity {
     private Adapter adapter;
     private ArrayList<Item> arrayList = new ArrayList<>();
     private Button rvOfBD;
-    private ImageView addImage;
+    private ImageView addImage, refresh;
     private ApiInterface apiInterface;
     private String fullname = null;
     public static final String CHANNEL_ID = "hakaton";
@@ -121,11 +121,40 @@ public class MainForAdminActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), CreateNewsForAdminActivity.class));
                 }else if(v.getId() == R.id.recyclerOfBD){
                     startActivity(new Intent(getApplicationContext(), ListOfDBForAdminActivity.class).putExtra("fullname", fullname));
+                }else if (v.getId() == R.id.refresh) {
+                    arrayList.clear();
+                    adapter.notifyDataSetChanged();
+                    rv.setHasFixedSize(true);
+                    rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                    apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+                    Call<List<Event>> call = apiInterface.get_events();
+
+                    call.enqueue(new Callback<List<Event>>() {
+                        @Override
+                        public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+                            List<Event> object = response.body();
+                            for (Event event : object) {
+                                arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
+                                adapter.notifyDataSetChanged();
+                                rv.smoothScrollToPosition(adapter.getItemCount());
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Event>> call, Throwable t) {
+
+                        }
+                    });
+
+                    adapter = new Adapter(getApplicationContext(), arrayList);
+                    rv.setAdapter(adapter);
                 }
             }
         };
         addImage.setOnClickListener(BTNs);
         rvOfBD.setOnClickListener(BTNs);
+        refresh.setOnClickListener(BTNs);
     }
 
     private void init(){
@@ -133,6 +162,7 @@ public class MainForAdminActivity extends AppCompatActivity {
         rvOfBD = findViewById(R.id.recyclerOfBD);
         addImage = findViewById(R.id.addImage);
         regText = findViewById(R.id.addNewUser);
+        refresh = findViewById(R.id.refresh);
     }
 
     @Override
