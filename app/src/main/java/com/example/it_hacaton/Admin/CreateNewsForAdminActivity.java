@@ -4,19 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import com.example.it_hacaton.Admin.MainForAdminActivity;
+import com.example.it_hacaton.API.ApiClient;
+import com.example.it_hacaton.API.ApiInterface;
 import com.example.it_hacaton.R;
+import com.example.it_hacaton.model.Event;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CreateNewsForAdminActivity extends AppCompatActivity {
 private Button createBtn;
-private EditText nameTo, description;
+private EditText name, middle_name, last_name, description;
 private boolean isReached = false;
+private ApiInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,14 +32,54 @@ private boolean isReached = false;
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
+                apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+
+                if (name.getText().toString().equals("") && middle_name.getText().toString().equals("") &&
+                        last_name.getText().toString().equals("")) {
+
+
+                    Call<Event> call = apiInterface.add_event(description.getText().toString(), null);
+
+                    call.enqueue(new Callback<Event>() {
+                        @Override
+                        public void onResponse(Call<Event> call, Response<Event> response) {
+                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
+                        }
+
+                        @Override
+                        public void onFailure(Call<Event> call, Throwable t) {
+
+                        }
+                    });
+
+                } else {
+                    Call<Event> call = apiInterface.add_event(description.getText().toString(),
+                            last_name.getText().toString() + " " + name.getText().toString() + " " +
+                                    middle_name.getText().toString());
+
+                    call.enqueue(new Callback<Event>() {
+                        @Override
+                        public void onResponse(Call<Event> call, Response<Event> response) {
+                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
+                        }
+
+                        @Override
+                        public void onFailure(Call<Event> call, Throwable t) {
+
+                        }
+                    });
+                }
             }
         });
 
     }
 
     private void init(){
-        nameTo = findViewById(R.id.name);
+        name = findViewById(R.id.name);
+        middle_name = findViewById(R.id.middleName);
+        last_name = findViewById(R.id.surname);
         description = findViewById(R.id.description);
         createBtn = findViewById(R.id.create);
     }

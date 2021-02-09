@@ -1,6 +1,7 @@
 package com.example.it_hacaton.UserAdapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,13 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Item parseItem = arrayList.get(position);
-        holder.name.setText(parseItem.getName());
-        holder.midleName.setText(parseItem.getMidleName());
+        if (arrayList.get(position).getName() == null)
+        {
+            holder.name.setText("Объявление!");
+            holder.name.setTextColor(Color.parseColor("#e34234"));
+        }else {
+            holder.name.setText(parseItem.getName());
+        }
         holder.description.setText(parseItem.getDescription());
 
     }
@@ -47,12 +53,11 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.ViewHolder> {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, midleName, description;
+        TextView name, description;
 
         public ViewHolder(@NonNull View v) {
             super(v);
             name = v.findViewById(R.id.name);
-            midleName = v.findViewById(R.id.midleName);
             description = v.findViewById(R.id.description);
         }
     }

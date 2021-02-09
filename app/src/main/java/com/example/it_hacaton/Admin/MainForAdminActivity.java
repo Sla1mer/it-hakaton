@@ -12,11 +12,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.it_hacaton.API.ApiClient;
+import com.example.it_hacaton.API.ApiInterface;
 import com.example.it_hacaton.Adapters.Adapter;
 import com.example.it_hacaton.Items.Item;
 import com.example.it_hacaton.R;
+import com.example.it_hacaton.model.Event;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainForAdminActivity extends AppCompatActivity {
     private RecyclerView rv;
@@ -24,6 +32,7 @@ public class MainForAdminActivity extends AppCompatActivity {
     private ArrayList<Item> arrayList = new ArrayList<>();
     private Button rvOfBD;
     private ImageView addImage;
+    private ApiInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +41,25 @@ public class MainForAdminActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
         getSupportActionBar().hide();
-        arrayList.add(new Item("Тема", "Максимович", "Дай доступ в БД1"));
+
+        apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+        Call<List<Event>> call = apiInterface.get_events();
+
+        call.enqueue(new Callback<List<Event>>() {
+            @Override
+            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+                List<Event> object = response.body();
+                for (Event event : object) {
+                    arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Event>> call, Throwable t) {
+
+            }
+        });
 
         adapter = new Adapter(this, arrayList);
         rv.setAdapter(adapter);

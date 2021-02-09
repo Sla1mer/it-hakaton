@@ -1,13 +1,12 @@
 package com.example.it_hacaton.Items;
 
 public class Item {
-    String name, midleName, description;
+    String name, description;
 
     public Item(){}
-    public Item(String name, String midleName, String description){
+    public Item(String name, String description){
         this.name = name;
         this.description = description;
-        this.midleName = midleName;
     }
 
     public String getName() {
@@ -16,14 +15,6 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getMidleName() {
-        return midleName;
-    }
-
-    public void setMidleName(String midleName) {
-        this.midleName = midleName;
     }
 
     public String getDescription() {

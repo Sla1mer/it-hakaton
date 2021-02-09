@@ -11,12 +11,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.it_hacaton.API.ApiClient;
+import com.example.it_hacaton.API.ApiInterface;
 import com.example.it_hacaton.Adapters.Adapter;
 import com.example.it_hacaton.Items.Item;
+import com.example.it_hacaton.Items.ItemForDBForAdmin;
 import com.example.it_hacaton.R;
 import com.example.it_hacaton.UserAdapter.AdapterUser;
+import com.example.it_hacaton.model.Event;
+import com.example.it_hacaton.model.GetListNameDB;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rv;
@@ -24,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AdapterUser adapter;
     private ArrayList<Item> arrayList = new ArrayList<>();
+    private ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +45,24 @@ public class MainActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        arrayList.add(new Item("Тема", "Максимович", "Дай доступ в БД1"));
+        apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+        Call<List<Event>> call = apiInterface.get_events();
+
+        call.enqueue(new Callback<List<Event>>() {
+            @Override
+            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+                List<Event> object = response.body();
+                for (Event event : object) {
+                    arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Event>> call, Throwable t) {
+
+            }
+        });
 
         adapter = new AdapterUser(this, arrayList);
         rv.setAdapter(adapter);

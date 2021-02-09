@@ -1,6 +1,7 @@
 package com.example.it_hacaton.API;
 
 import com.example.it_hacaton.model.AddDatabase;
+import com.example.it_hacaton.model.Event;
 import com.example.it_hacaton.model.AddPersonFromDBPersonal;
 import com.example.it_hacaton.model.DeletePerson;
 import com.example.it_hacaton.model.GetListNameDB;
@@ -63,4 +64,13 @@ public interface ApiInterface {
             @Query("last_name") String last_name,
             @Query("database_name") String database_name
     );
+
+    @GET("add_event.php")
+    Call<Event> add_event(
+            @Query("description") String description,
+            @Query("to_subject") String to_subject
+    );
+
+    @GET("get_list_events.php")
+    Call<List<Event>> get_events();
 }
