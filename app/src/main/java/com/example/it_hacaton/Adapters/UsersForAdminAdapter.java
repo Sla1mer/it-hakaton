@@ -1,6 +1,7 @@
 package com.example.it_hacaton.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
+import com.example.it_hacaton.Admin.MainForAdminActivity;
 import com.example.it_hacaton.Items.ItemForDBForAdmin;
 import com.example.it_hacaton.Items.ItemUsersForAdmin;
 import com.example.it_hacaton.R;
 import com.example.it_hacaton.model.DeletePerson;
+import com.example.it_hacaton.model.Event;
 import com.example.it_hacaton.model.User;
 
 import java.util.ArrayList;
@@ -29,6 +32,7 @@ public class UsersForAdminAdapter extends RecyclerView.Adapter<UsersForAdminAdap
     private ArrayList<ItemUsersForAdmin> parseItems;
     private Context context;
     private ApiInterface apiInterface;
+    private ApiInterface apiInterface2;
     private String database_name;
 
     public UsersForAdminAdapter(ArrayList<ItemUsersForAdmin> parseItems, Context context, String database_name) {
@@ -72,6 +76,24 @@ public class UsersForAdminAdapter extends RecyclerView.Adapter<UsersForAdminAdap
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
+
+            apiInterface2 = ApiClient.getAppClient().create(ApiInterface.class);
+            Call<Event> call2 = apiInterface2.add_event(parseItems.get(position).getLastName() +
+                    " " + parseItems.get(position).getName() + " " + parseItems.get(position).getMiddleName() +
+                    " был удалён из " + database_name, parseItems.get(position).getLastName() +
+                    " " + parseItems.get(position).getName() + " " + parseItems.get(position).getMiddleName());
+
+            call2.enqueue(new Callback<Event>() {
+                @Override
+                public void onResponse(Call<Event> call, Response<Event> response) {
+                    Toast.makeText(context, "Success", Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onFailure(Call<Event> call, Throwable t) {
+
+                }
+            });
 
             apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
             Call<DeletePerson> call = apiInterface.delete_person_from_db(parseItems.get(position).getName(),

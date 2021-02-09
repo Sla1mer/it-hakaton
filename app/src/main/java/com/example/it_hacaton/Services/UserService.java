@@ -55,7 +55,7 @@ public class UserService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Intent intent2 = new Intent(getApplicationContext(), MainForAdminActivity.class);
+        Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
         PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intent2, 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
@@ -92,10 +92,10 @@ public class UserService extends Service {
                             arrayList.add(new Item(event.getTo_subject(), event.getDescription()));
                         }
 
-                        if (arrayList.size() != size && arrayList.get(arrayList.size() - 1).getName().trim().equals(LoginActivity.fullname.trim()) && count != 0)
+                        if (arrayList.size() < size && arrayList.get(arrayList.size() - 1).getName().trim().equals(LoginActivity.fullname.trim()) && count != 0)
                         {
                             String bigText = arrayList.get(arrayList.size() - 1).getDescription();
-                            Intent intent2 = new Intent(getApplicationContext(), MainForAdminActivity.class);
+                            Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
                             PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intent2, 0);
 
                             NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
