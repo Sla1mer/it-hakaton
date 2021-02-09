@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
     private void init(){
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        enter = findViewById(R.id.enter);
+        enter = findViewById(R.id.enter);//
     }
 
     @Override
