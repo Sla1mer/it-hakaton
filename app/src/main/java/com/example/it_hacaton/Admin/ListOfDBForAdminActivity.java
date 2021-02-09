@@ -77,22 +77,55 @@ public class ListOfDBForAdminActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
-        Call<List<GetListNameDB>> call = apiInterface.get_list_name_db();
-
-        call.enqueue(new Callback<List<GetListNameDB>>() {
+        mainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<List<GetListNameDB>> call, Response<List<GetListNameDB>> response) {
-                List<GetListNameDB> names = response.body();
-                for (GetListNameDB getListNameDB : names) {
-                    arrayList.add(new ItemForDBForAdmin(getListNameDB.getName_db()));
-                    adapter.notifyDataSetChanged();
-                }
+            public void onClick(View v) {
+                arrayList.clear();
+                apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+                Call<List<GetListNameDB>> call;
+                call = apiInterface.get_list_name_db("list_db");
+                call.enqueue(new Callback<List<GetListNameDB>>() {
+                    @Override
+                    public void onResponse(Call<List<GetListNameDB>> call, Response<List<GetListNameDB>> response) {
+                        List<GetListNameDB> names = response.body();
+                        for (GetListNameDB getListNameDB : names) {
+                            arrayList.add(new ItemForDBForAdmin(getListNameDB.getName_db()));
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<GetListNameDB>> call, Throwable t) {
+
+                    }
+                });
+                mainBtn.setEnabled(true);
             }
+        });
 
+        testBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(Call<List<GetListNameDB>> call, Throwable t) {
+            public void onClick(View v) {
+                arrayList.clear();
+                apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+                Call<List<GetListNameDB>> call;
+                call = apiInterface.get_list_name_db("list_db_testing");
+                call.enqueue(new Callback<List<GetListNameDB>>() {
+                    @Override
+                    public void onResponse(Call<List<GetListNameDB>> call, Response<List<GetListNameDB>> response) {
+                        List<GetListNameDB> names = response.body();
+                        for (GetListNameDB getListNameDB : names) {
+                            arrayList.add(new ItemForDBForAdmin(getListNameDB.getName_db()));
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<List<GetListNameDB>> call, Throwable t) {
+
+                    }
+                });
+                testBtn.setEnabled(true);
             }
         });
 

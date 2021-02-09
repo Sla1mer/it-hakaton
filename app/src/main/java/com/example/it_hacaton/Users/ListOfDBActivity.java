@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
@@ -56,24 +57,58 @@ public class ListOfDBActivity extends AppCompatActivity {
             }
         });
 
-        apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
-        Call<List<GetListNameDB>> call = apiInterface.get_list_name_db();
-        call.enqueue(new Callback<List<GetListNameDB>>() {
-            @Override
-            public void onResponse(Call<List<GetListNameDB>> call, Response<List<GetListNameDB>> response) {
-                List<GetListNameDB> names = response.body();
-                for (GetListNameDB getListNameDB : names) {
-                    arrayList.add(new ItemForDBForAdmin(getListNameDB.getName_db()));
-                    System.out.println(arrayList);
-                }
 
-                adapter = new UsersAdapterInDB(arrayList, getApplicationContext());
-                rv.setAdapter(adapter);
+        adapter = new UsersAdapterInDB(arrayList, getApplicationContext());
+        rv.setAdapter(adapter);
+        mainBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayList.clear();
+                apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+                Call<List<GetListNameDB>> call;
+                call = apiInterface.get_list_name_db("list_db");
+                call.enqueue(new Callback<List<GetListNameDB>>() {
+                    @Override
+                    public void onResponse(Call<List<GetListNameDB>> call, Response<List<GetListNameDB>> response) {
+                        List<GetListNameDB> names = response.body();
+                        for (GetListNameDB getListNameDB : names) {
+                            arrayList.add(new ItemForDBForAdmin(getListNameDB.getName_db()));
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<GetListNameDB>> call, Throwable t) {
+
+                    }
+                });
+                mainBtn.setEnabled(true);
             }
+        });
 
+        testBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(Call<List<GetListNameDB>> call, Throwable t) {
+            public void onClick(View v) {
+                arrayList.clear();
+                apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+                Call<List<GetListNameDB>> call;
+                call = apiInterface.get_list_name_db("list_db_testing");
+                call.enqueue(new Callback<List<GetListNameDB>>() {
+                    @Override
+                    public void onResponse(Call<List<GetListNameDB>> call, Response<List<GetListNameDB>> response) {
+                        List<GetListNameDB> names = response.body();
+                        for (GetListNameDB getListNameDB : names) {
+                            arrayList.add(new ItemForDBForAdmin(getListNameDB.getName_db()));
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<List<GetListNameDB>> call, Throwable t) {
+
+                    }
+                });
+                testBtn.setEnabled(true);
             }
         });
 

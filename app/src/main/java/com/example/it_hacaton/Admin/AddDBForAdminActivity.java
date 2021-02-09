@@ -7,13 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
+import com.example.it_hacaton.Items.ItemForDBForAdmin;
 import com.example.it_hacaton.R;
 import com.example.it_hacaton.model.AddDatabase;
 import com.example.it_hacaton.model.Event;
+import com.example.it_hacaton.model.GetListNameDB;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,6 +31,8 @@ public class AddDBForAdminActivity extends AppCompatActivity {
     private ApiInterface apiInterface;
     private ApiInterface apiInterface2;
     private String fullname = null;
+    private RadioButton mainBtn, testBtn;
+    private String to;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,42 +45,99 @@ public class AddDBForAdminActivity extends AppCompatActivity {
 
         name_db = findViewById(R.id.name_db);
         create = findViewById(R.id.create);
+        testBtn = findViewById(R.id.testBtn);
+        mainBtn = findViewById(R.id.mainBtn);
         getSupportActionBar().hide();
+
+        mainBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                to = "Основная";
+                mainBtn.setEnabled(true);
+            }
+        });
+
+        testBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                to = "Тестовая";
+                testBtn.setEnabled(true);
+            }
+        });
+
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
-                Call<AddDatabase> call = apiInterface.add_db(name_db.getText().toString());
 
-                call.enqueue(new Callback<AddDatabase>() {
-                    @Override
-                    public void onResponse(Call<AddDatabase> call, Response<AddDatabase> response) {
-                        Toast.makeText(getApplicationContext(), "Succeess", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
-                    }
+                if (to.equals("Основная"))
+                {
+                    apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+                    Call<AddDatabase> call = apiInterface.add_db(name_db.getText().toString(), "list_db");
 
-                    @Override
-                    public void onFailure(Call<AddDatabase> call, Throwable t) {
+                    call.enqueue(new Callback<AddDatabase>() {
+                        @Override
+                        public void onResponse(Call<AddDatabase> call, Response<AddDatabase> response) {
+                            Toast.makeText(getApplicationContext(), "Succeess", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
+                        }
 
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<AddDatabase> call, Throwable t) {
 
-                apiInterface2 = ApiClient.getAppClient().create(ApiInterface.class);
-                Call<Event> call2 = apiInterface.add_event(LoginActivity.fullname + " " +
-                        "добавил новую базу данных (" + name_db.getText().toString() + ")", null);
+                        }
+                    });
 
-                call2.enqueue(new Callback<Event>() {
-                    @Override
-                    public void onResponse(Call<Event> call, Response<Event> response) {
-                        Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
-                    }
+                    apiInterface2 = ApiClient.getAppClient().create(ApiInterface.class);
+                    Call<Event> call2 = apiInterface.add_event(LoginActivity.fullname + " " +
+                            "добавил новую основную базу данных (" + name_db.getText().toString() + ")", null);
 
-                    @Override
-                    public void onFailure(Call<Event> call, Throwable t) {
+                    call2.enqueue(new Callback<Event>() {
+                        @Override
+                        public void onResponse(Call<Event> call, Response<Event> response) {
+                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
+                        }
 
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<Event> call, Throwable t) {
+
+                        }
+                    });
+                } else
+                {
+                    apiInterface = ApiClient.getAppClient().create(ApiInterface.class);
+                    Call<AddDatabase> call = apiInterface.add_db(name_db.getText().toString(), "list_db_testing");
+
+                    call.enqueue(new Callback<AddDatabase>() {
+                        @Override
+                        public void onResponse(Call<AddDatabase> call, Response<AddDatabase> response) {
+                            Toast.makeText(getApplicationContext(), "Succeess", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
+                        }
+
+                        @Override
+                        public void onFailure(Call<AddDatabase> call, Throwable t) {
+
+                        }
+                    });
+
+                    apiInterface2 = ApiClient.getAppClient().create(ApiInterface.class);
+                    Call<Event> call2 = apiInterface.add_event(LoginActivity.fullname + " " +
+                            "добавил новую тестовую базу данных (" + name_db.getText().toString() + ")", null);
+
+                    call2.enqueue(new Callback<Event>() {
+                        @Override
+                        public void onResponse(Call<Event> call, Response<Event> response) {
+                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getApplicationContext(), MainForAdminActivity.class));
+                        }
+
+                        @Override
+                        public void onFailure(Call<Event> call, Throwable t) {
+
+                        }
+                    });
+                }
             }
         });
     }

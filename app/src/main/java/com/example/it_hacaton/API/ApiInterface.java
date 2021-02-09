@@ -35,14 +35,17 @@ public interface ApiInterface {
             @Query("password") String password
     );
 
-    @FormUrlEncoded
-    @POST("add_db.php")
+    @GET("add_db.php")
     Call<AddDatabase> add_db(
-            @Field("database_name") String database_name
+            @Query("database_name") String database_name,
+            @Query("view") String view
+
     );
 
     @GET("get_list_name_db.php")
-    Call<List<GetListNameDB>> get_list_name_db();
+    Call<List<GetListNameDB>> get_list_name_db(
+            @Query("view") String view
+    );
 
     @GET("get_list_db_personal.php")
     Call<List<GetPersonFromDBPersonal>> get_list_db_personal(
