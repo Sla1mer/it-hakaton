@@ -1,5 +1,6 @@
 package com.example.it_hacaton.Admin;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,6 +42,7 @@ public class MainForAdminActivity extends AppCompatActivity {
     private String fullname = null;
     public static final String CHANNEL_ID = "hakaton";
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,26 +89,13 @@ public class MainForAdminActivity extends AppCompatActivity {
         rv.setAdapter(adapter);
 
         onCLicks();
-        createNotificationChannel();
         startService();
     }
 
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel serviceChannel = new NotificationChannel(
-                    CHANNEL_ID,
-                    "IT-HAKATON",
-                    NotificationManager.IMPORTANCE_DEFAULT
-            );
-
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(serviceChannel);
-        }
-    }
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void startService() {
-        Intent serviceIntent = new Intent(this, UserAdminService.class);
-        startService(serviceIntent);
+        Intent serviceIntent = new Intent(getApplicationContext(), UserAdminService.class);
+        startForegroundService(serviceIntent);
     }
 
     private void onCLicks(){
