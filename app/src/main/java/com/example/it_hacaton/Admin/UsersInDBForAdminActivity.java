@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
@@ -38,7 +39,7 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
     private ApiInterface apiInterface2;
     private String name_db;
     private String fullname;
-
+    private RadioButton mainBtn, testBtn;
  private ImageView addImage;
     private UsersForAdminAdapter adapter;
     private ArrayList<ItemUsersForAdmin> arrayList = new ArrayList<>();
@@ -49,6 +50,9 @@ public class UsersInDBForAdminActivity extends AppCompatActivity {
         Intent intent = getIntent();
         name_db = intent.getStringExtra("name_db");
         fullname = intent.getStringExtra("fullname");
+
+        testBtn = findViewById(R.id.testBtn);
+        mainBtn = findViewById(R.id.mainBtn);
 
         rv = findViewById(R.id.rv);
         final Timer time = new Timer();

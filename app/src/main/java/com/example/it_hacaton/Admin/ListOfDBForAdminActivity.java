@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
@@ -27,6 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ListOfDBForAdminActivity extends AppCompatActivity {
+    private RadioButton mainBtn, testBtn;
     private EditText search;
     private RecyclerView rv;
     private ImageView addImage;
@@ -42,6 +44,9 @@ public class ListOfDBForAdminActivity extends AppCompatActivity {
         Intent intent = getIntent();
         fullname = intent.getStringExtra("fullname");
         System.out.println(fullname + " rtyuio");
+
+        testBtn = findViewById(R.id.testBtn);
+        mainBtn = findViewById(R.id.mainBtn);
 
         init();
         getSupportActionBar().hide();

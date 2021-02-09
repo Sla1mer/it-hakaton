@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import com.example.it_hacaton.API.ApiClient;
 import com.example.it_hacaton.API.ApiInterface;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 
 public class ListOfDBActivity extends AppCompatActivity {
     private EditText search;
+    private RadioButton mainBtn, testBtn;
     private RecyclerView rv;
     private UsersAdapterInDB adapter;
     private ArrayList<ItemForDBForAdmin> arrayList = new ArrayList<>();
@@ -80,6 +82,8 @@ public class ListOfDBActivity extends AppCompatActivity {
     private void init(){
         rv = findViewById(R.id.rv);
         search = findViewById(R.id.search);
+        testBtn = findViewById(R.id.testBtn);
+        mainBtn = findViewById(R.id.mainBtn);
     }
 
     private void filter(String text){
