@@ -44,6 +44,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".Services.UserService"/>
+        <service android:name=".Services.UserAdminService"/>
     </application>
 
 </manifest>
